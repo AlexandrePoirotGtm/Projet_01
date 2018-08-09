@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Data
 {
 
-	class OutilsData
+	public class OutilsData
 	{
 		const string CheminFichierDest = @"...\Destination.txt";
 		const string CheminFichierVoya = @"...\Voyages.txt";
@@ -24,20 +24,48 @@ namespace Data
 		private List<Voyage> voyages;
 		private List<Dossier> dossiers;
 		private List<Client> clients;
-		private List<Participant> partipants;
+		private List<Participant> participants;
 		private List<Commerciaux> commerciaux;
 
 
-		public void SelectionnerVoyage()
+		public void SelectionnerVoyage(Voyage voyage)
         {
+            if (!this.voyages.Contains(voyage))
+            {
+                this.voyages.Add(voyage);
+            }
+            this.EcrireFichierVoyage();
+            EcrireFichierVoyage();
+        }
 
+        
+        public void CreerClient(Client client)
+        {
+            if (!this.clients.Contains(client))
+            {
+                this.clients.Add(client);
+            }
+            this.EcrireFichierClient();
+            EcrireFichierClient();
+            
+        }
+
+        public void EnregistrerParticipants(Participant participant) 
+        {
+            if (!this.participants.Contains(participant))
+            {
+                this.participants.Add(participant);
+            }
+            this.EcrireFichierVoyage();
+            EcrireFichierParticipants();
         }
 
         public void CreerDossier()
         {
-
-            //var dossier = new Dossier();
+            
         }
+
+
 
         private void LireFichierClient()
         {
@@ -55,15 +83,18 @@ namespace Data
                     client.Adresse = champs[2];
                     string num = client.NuméroTéléphone.ToString();
                     num= champs[3];
-                    //client.Civilite = champs[4]);  
+                    //client.Civilite = champs[4]);  Pseudo ? Mot de passe ?
 
                     clients.Add(client);
                 }
             }
         }
 
+        // A RAJOUTER AUSSI POUR PARTICIPANTS DESTINATIONS VOYAGE
 
-        private void EcrireFichierClient(string cheminFichier)
+
+
+        private void EcrireFichierClient()
         {
             var contenuFichier = new StringBuilder();
             foreach (var client in this.clients)
@@ -81,6 +112,40 @@ namespace Data
             }
         }
 
+        private void EcrireFichierVoyage()
+        {
+            var contenuFichier = new StringBuilder();
+            foreach (var voyage in this.voyages)
+            {
+                contenuFichier.AppendLine(string.Join(
+                                            SeparateurChamps.ToString(),
+                                            voyage.Destination,
+                                            voyage.DateDeDepart,
+                                            voyage.DateDeFin,
+                                            voyage.PrixPersonne,
+                                            voyage.NombresParticipantsMax));
+                // pseudo ??
 
+                File.WriteAllText(CheminFichierVoya, contenuFichier.ToString());
+            }
+        }
+
+        private void EcrireFichierParticipants()
+        {
+            var contenuFichier = new StringBuilder();
+            foreach (var participant in this.participants)
+            {
+                contenuFichier.AppendLine(string.Join(
+                                            SeparateurChamps.ToString(),
+                                            participant.Age,
+                                            participant.Nom,
+                                            participant.Prenom,
+                                            participant.NuméroTéléphone,
+                                            participant.Adresse));
+                // pseudo ??
+
+                File.WriteAllText(CheminFichierPart, contenuFichier.ToString());
+            }
+        }
     }
 }

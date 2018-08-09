@@ -8,6 +8,6 @@ namespace Metier
 {
 	public static class OutilsMetier
 	{
-
+       
 	}
 }
