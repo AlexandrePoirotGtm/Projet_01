@@ -8,5 +8,8 @@ namespace Metier
 {
 	class Dossier
 	{
+		public int NombreDeParticipants { get; set; }
+		public double PrixTotal { get; set; }
+		public Etat Etat { get; set; }
 	}
 }
