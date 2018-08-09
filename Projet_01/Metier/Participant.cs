@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace Metier
 {
-	class Participant : Personne
+	class Participant : Personne ,IClientèle 
 	{
+		public int NuméroTéléphone { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+		public string Adresse { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 	}
 }
