@@ -65,16 +65,17 @@ namespace Data
             this.EcrireFichierClient();
         }
 
-        private void LireFichierClients()
+        void LireFichierClients()
         {
-            this.clients = new List<Client>();
+            // Lire un fichier
+            //var cheminFichier = @"...\Clients.txt";
             if (File.Exists(CheminFichierCli))
             {
-                var lignes = File.ReadAllLines(CheminFichierCli);
-                foreach (var ligne in lignes)
+                IEnumerable<string> lignesFichier = File.ReadLines(CheminFichierCli);
+                //var contactsDansFichier = new List<Contact>();
+                foreach (var ligneFichier in lignesFichier)
                 {
-                    var champs = ligne.Split(SeparateurChamps);
-
+                    string[] champs = ligneFichier.Split('\n');
                     var client = new Client();
                     client.Nom = champs[0];
                     client.Prenom = champs[1];
@@ -86,6 +87,17 @@ namespace Data
                     clients.Add(client);
                 }
             }
+            else
+            {
+                //Ecrire un contenu
+                var contenuFichier = new StringBuilder();
+                foreach (var client in clients)
+                {
+                    contenuFichier.AppendLine(string.Join(" \n", client.Nom, client.Prenom, client.Adresse, client.NuméroTéléphone));
+                }
+                File.WriteAllText(CheminFichierCli, contenuFichier.ToString());
+            }
+            Console.ReadKey();
         }
 
         private void EcrireFichierClient()
