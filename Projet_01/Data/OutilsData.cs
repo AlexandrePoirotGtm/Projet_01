@@ -107,10 +107,50 @@ namespace Data
         }
 
 
-        // ========================= GESTION DES PARTICIPANTS =======================//
-        // ==========  === = ======== ========= ===== ===== ==========//
+        //public static void EcrireFichier(List<Client> clients)
+        //{
+        //    StreamWriter fileWriter = new StreamWriter(CheminFichierCli);
+        //    foreach (Client a in clients)
+        //    {
+
+        //        fileWriter.WriteLine($"Accompagnants:");
+        //        fileWriter.WriteLine("nom-" + a.Nom);
+        //        fileWriter.WriteLine("prenom-" + a.Prenom);
+        //        fileWriter.WriteLine("civilite-" + a.Adresse);
+        //        int num = a.NuméroTéléphone;
+        //        string numero = num.ToString();
+        //        fileWriter.WriteLine("tele-" + numero);
+        //        fileWriter.WriteLine("date-" + a.DateDeNaissance);
+        //        fileWriter.WriteLine("Id-" + a.Id);
+        //        fileWriter.WriteLine("****************");
+
+        //    }
+        //    fileWriter.Close();
+
+        //}
 
 
+
+
+
+
+            // ========================= GESTION DES PARTICIPANTS =======================//
+            // ==========  === = ======== ========= ===== ===== ==========//
+
+
+            private void InitialiserListeParticipants()
+        {
+            if (this.participants == null)
+            {
+                LireFichierParticipants();
+            }
+        }
+
+        public IEnumerable<Participant> GetListeParticipants()
+        {
+            InitialiserListeParticipants();
+            return this.participants;
+        }
 
         public void EnregistrerParticipants(Participant participant)
         {
@@ -118,7 +158,7 @@ namespace Data
             {
                 this.participants.Add(participant);
             }
-            this.EcrireFichierVoyage();
+            this.EcrireFichierParticipants();
             EcrireFichierParticipants();
         }
 
@@ -140,7 +180,28 @@ namespace Data
             }
         }
 
+        private void LireFichierParticipants()
+        {
+            this.participants = new List<Participant>();
+            if (File.Exists(CheminFichierPart))
+            {
+                var lignes = File.ReadAllLines(CheminFichierPart);
+                foreach (var ligne in lignes)
+                {
+                    var champs = ligne.Split(SeparateurChamps);
 
+                    var participant = new Participant();
+                    participant.Nom = champs[0];
+                    participant.Prenom = champs[1];
+                    participant.Adresse = champs[2];
+                    string num = participant.NuméroTéléphone.ToString();
+                    num = champs[3];
+                    //client.Civilite = champs[4]);  Pseudo ? Mot de passe ?
+
+                    participants.Add(participant);
+                }
+            }
+        }
 
 
 
