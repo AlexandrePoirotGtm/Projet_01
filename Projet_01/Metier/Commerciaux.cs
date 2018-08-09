@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Metier
 {
-	public class Commerciaux : Personne
+	public class Commerciaux : Personne,ILogger
 	{
         public string Pseudo { get; set; }
         public string MotDePasse { get; set; }
