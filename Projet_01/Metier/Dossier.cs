@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Metier
 {
-	class Dossier
+	public class Dossier
 	{
 		public int NombreDeParticipants { get; set; }
 		public double PrixTotal { get; set; }

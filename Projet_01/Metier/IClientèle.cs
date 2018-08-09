@@ -10,5 +10,8 @@ namespace Metier
 	{
 		int NuméroTéléphone { get; set; }
 		string Adresse { get; set; }
+
+
+		
 	}
 }

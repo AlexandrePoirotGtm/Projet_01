@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Metier
 {
-	class Destination
+	public class Destination
 	{
 		public string Description { get; set; }
 		public string Continent { get; set; }

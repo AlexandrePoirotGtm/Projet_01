@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Metier
 {
-	enum Etat
+	public enum Etat
 	{
 		EnAttente,
 		EnCours,

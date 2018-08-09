@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Metier
 {
-	abstract class Personne
+	abstract public class Personne
 	{
         public string Prenom { get; set; }
         public string Nom { get; set; }

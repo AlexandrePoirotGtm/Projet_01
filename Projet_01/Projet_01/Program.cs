@@ -4,7 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Projet_01
+
+using Metier;
+namespace Application
 {
 	class Program
 	{
@@ -12,7 +14,7 @@ namespace Projet_01
 		{
 			Console.WriteLine("Hello World!!!");
 			Console.WriteLine("Hello GTM!!!");
-
+			
 			
 		}
 	}

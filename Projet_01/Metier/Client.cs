@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Metier
 {
-	class Client : Personne
+	public class Client : Personne, IClientèle, ILogger
 	{
         public int NumeroDeTelephone { get; set; }
         public string Adresse { get; set; }
