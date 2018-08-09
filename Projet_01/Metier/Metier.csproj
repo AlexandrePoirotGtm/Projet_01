@@ -49,6 +49,7 @@
     <Compile Include="Etat.cs" />
     <Compile Include="IClientèle.cs" />
     <Compile Include="ILogger.cs" />
+    <Compile Include="OutilsMetier.cs" />
     <Compile Include="Participant.cs" />
     <Compile Include="Personne.cs" />
     <Compile Include="Program.cs" />
