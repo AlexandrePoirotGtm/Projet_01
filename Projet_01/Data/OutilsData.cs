@@ -17,7 +17,7 @@ namespace Data
 		const string CheminFichierPart = @"...\Participants.txt";
 		const string CheminFichierComm = @"...\Commerciaux.txt";
                 
-        const char SeparateurChamps = ';';
+        const char SeparateurChamps = '\n';
 
 
         private List<Destination> destinations;
@@ -27,47 +27,44 @@ namespace Data
 		private List<Participant> participants;
 		private List<Commerciaux> commerciaux;
 
-
-		public void SelectionnerVoyage(Voyage voyage)
+        private void InitialiserListeClients()
         {
-            if (!this.voyages.Contains(voyage))
+            if (this.clients == null)
             {
-                this.voyages.Add(voyage);
+                LireFichierClients();
             }
-            this.EcrireFichierVoyage();
-            EcrireFichierVoyage();
         }
 
-        
-        public void CreerClient(Client client)
+        // =============== GESTION DES CLIENTS==================//
+        // ========== Déclaration d'un nouveau client ==========//
+
+        public IEnumerable<Client> GetListeClients()
         {
+            InitialiserListeClients();
+            return this.clients;
+        }
+
+        public void Enregistrer(Client client)
+        {
+            InitialiserListeClients();
+
             if (!this.clients.Contains(client))
             {
                 this.clients.Add(client);
             }
+
             this.EcrireFichierClient();
-            EcrireFichierClient();
-            
         }
 
-        public void EnregistrerParticipants(Participant participant) 
+        public void Supprimer(Client client)
         {
-            if (!this.participants.Contains(participant))
-            {
-                this.participants.Add(participant);
-            }
-            this.EcrireFichierVoyage();
-            EcrireFichierParticipants();
+            InitialiserListeClients();
+
+            this.clients.Remove(client);
+            this.EcrireFichierClient();
         }
 
-        public void CreerDossier()
-        {
-            
-        }
-
-
-
-        private void LireFichierClient()
+        private void LireFichierClients()
         {
             this.clients = new List<Client>();
             if (File.Exists(CheminFichierCli))
@@ -82,17 +79,13 @@ namespace Data
                     client.Prenom = champs[1];
                     client.Adresse = champs[2];
                     string num = client.NuméroTéléphone.ToString();
-                    num= champs[3];
+                    num = champs[3];
                     //client.Civilite = champs[4]);  Pseudo ? Mot de passe ?
 
                     clients.Add(client);
                 }
             }
         }
-
-        // A RAJOUTER AUSSI POUR PARTICIPANTS DESTINATIONS VOYAGE
-
-
 
         private void EcrireFichierClient()
         {
@@ -111,6 +104,47 @@ namespace Data
                 File.WriteAllText(CheminFichierCli, contenuFichier.ToString());
             }
         }
+
+
+        // =============== GESTION DES DESTINATIONS ==================//
+        // ==========  === = ======== ========= ===== ===== ==========//
+
+
+
+
+
+        public void SelectionnerVoyage(Voyage voyage)
+        {
+            if (!this.voyages.Contains(voyage))
+            {
+                this.voyages.Add(voyage);
+            }
+            this.EcrireFichierVoyage();
+            EcrireFichierVoyage();
+        }
+
+        
+
+        public void EnregistrerParticipants(Participant participant) 
+        {
+            if (!this.participants.Contains(participant))
+            {
+                this.participants.Add(participant);
+            }
+            this.EcrireFichierVoyage();
+            EcrireFichierParticipants();
+        }
+
+
+
+
+        
+
+        // A RAJOUTER AUSSI POUR PARTICIPANTS DESTINATIONS VOYAGE
+
+
+
+        
 
         private void EcrireFichierVoyage()
         {
@@ -146,6 +180,15 @@ namespace Data
 
                 File.WriteAllText(CheminFichierPart, contenuFichier.ToString());
             }
+        }
+
+
+
+
+
+        public void CreerDossier()
+        {
+
         }
     }
 }
