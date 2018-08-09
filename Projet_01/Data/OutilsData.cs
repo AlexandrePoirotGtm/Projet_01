@@ -35,9 +35,32 @@ namespace Data
 
         public void CreerDossier()
         {
-            //Dossier dossier = new Dossier(Client client.Nom, Voyage voyage, Participant participants);
+
+            //var dossier = new Dossier();
         }
 
+        private void LireFichierClient()
+        {
+            this.clients = new List<Client>();
+            if (File.Exists(CheminFichierCli))
+            {
+                var lignes = File.ReadAllLines(CheminFichierCli);
+                foreach (var ligne in lignes)
+                {
+                    var champs = ligne.Split(SeparateurChamps);
+
+                    var client = new Client();
+                    client.Nom = champs[0];
+                    client.Prenom = champs[1];
+                    client.Adresse = champs[2];
+                    string num = client.NuméroTéléphone.ToString();
+                    num= champs[3];
+                    //client.Civilite = champs[4]);  
+
+                    clients.Add(client);
+                }
+            }
+        }
 
 
         private void EcrireFichierClient(string cheminFichier)
