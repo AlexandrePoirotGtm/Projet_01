@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Metier
 {
-	interface ILogger
+	public interface ILogger
 	{
         string Pseudo { get; set;}
         string MotDePasse { get; set; }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Metier
 {
-	interface IClientèle
+	public interface IClientèle
 	{
 		int NuméroTéléphone { get; set; }
 		string Adresse { get; set; }

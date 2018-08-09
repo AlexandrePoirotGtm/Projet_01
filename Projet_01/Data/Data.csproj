@@ -42,11 +42,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Client.cs" />
+    <Compile Include="Commerciaux.cs" />
+    <Compile Include="Destination.cs" />
+    <Compile Include="Dossier.cs" />
+    <Compile Include="Etat.cs" />
     <Compile Include="OutilsData.cs" />
+    <Compile Include="Participant.cs" />
+    <Compile Include="Personne.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Voyage.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Metier\Metier.csproj">
+      <Project>{56ed6b3a-19ed-441f-819f-c3181f5834a4}</Project>
+      <Name>Metier</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
