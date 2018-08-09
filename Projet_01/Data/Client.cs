@@ -9,7 +9,7 @@ namespace Data
 {
 	public class Client : Personne, IClientèle, ILogger
 	{
-		public int NumeroDeTelephone { get; set; }
+		//public int NumeroDeTelephone { get; set; }
 		public string Adresse { get; set; }
 		public bool Civilite { get; set; }
 		public int NuméroTéléphone { get; set; }
