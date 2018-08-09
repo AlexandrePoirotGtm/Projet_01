@@ -10,6 +10,7 @@ namespace Metier
 	{
 		public int NuméroTéléphone { get ; set; }
 		public string Adresse { get; set ; }
+        public string Age { get; set; }
 		
 	}
 }
