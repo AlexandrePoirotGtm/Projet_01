@@ -8,7 +8,7 @@ namespace Metier
 {
 	class Participant : Personne ,IClientèle 
 	{
-		public int NuméroTéléphone { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-		public string Adresse { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+		public int NuméroTéléphone { get ; set; }
+		public string Adresse { get; set ; }
 	}
 }
