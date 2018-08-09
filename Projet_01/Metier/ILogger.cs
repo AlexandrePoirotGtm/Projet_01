@@ -8,5 +8,7 @@ namespace Metier
 {
 	interface ILogger
 	{
-	}
+        string Pseudo { get; set;}
+        string MotDePasse { get; set; }
+    }
 }
