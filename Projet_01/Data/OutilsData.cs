@@ -27,6 +27,12 @@ namespace Data
 		private List<Participant> participants;
 		private List<Commerciaux> commerciaux;
 
+
+
+        // =========================== GESTION DES CLIENTS=============================//
+        // ===================== Déclaration d'un nouveau client ======================//
+        //=============== A METTRE PEUT-ETRE PLUTOT DANS LA COUCHE METIER ============//
+
         private void InitialiserListeClients()
         {
             if (this.clients == null)
@@ -35,16 +41,13 @@ namespace Data
             }
         }
 
-        // =============== GESTION DES CLIENTS==================//
-        // ========== Déclaration d'un nouveau client ==========//
-
         public IEnumerable<Client> GetListeClients()
         {
             InitialiserListeClients();
             return this.clients;
         }
 
-        public void Enregistrer(Client client)
+        public void EnregistrerClient(Client client)
         {
             InitialiserListeClients();
 
@@ -52,14 +55,12 @@ namespace Data
             {
                 this.clients.Add(client);
             }
-
             this.EcrireFichierClient();
         }
 
-        public void Supprimer(Client client)
+        public void SupprimerClient(Client client)
         {
             InitialiserListeClients();
-
             this.clients.Remove(client);
             this.EcrireFichierClient();
         }
@@ -106,26 +107,12 @@ namespace Data
         }
 
 
-        // =============== GESTION DES DESTINATIONS ==================//
+        // ========================= GESTION DES PARTICIPANTS =======================//
         // ==========  === = ======== ========= ===== ===== ==========//
 
 
 
-
-
-        public void SelectionnerVoyage(Voyage voyage)
-        {
-            if (!this.voyages.Contains(voyage))
-            {
-                this.voyages.Add(voyage);
-            }
-            this.EcrireFichierVoyage();
-            EcrireFichierVoyage();
-        }
-
-        
-
-        public void EnregistrerParticipants(Participant participant) 
+        public void EnregistrerParticipants(Participant participant)
         {
             if (!this.participants.Contains(participant))
             {
@@ -133,35 +120,6 @@ namespace Data
             }
             this.EcrireFichierVoyage();
             EcrireFichierParticipants();
-        }
-
-
-
-
-        
-
-        // A RAJOUTER AUSSI POUR PARTICIPANTS DESTINATIONS VOYAGE
-
-
-
-        
-
-        private void EcrireFichierVoyage()
-        {
-            var contenuFichier = new StringBuilder();
-            foreach (var voyage in this.voyages)
-            {
-                contenuFichier.AppendLine(string.Join(
-                                            SeparateurChamps.ToString(),
-                                            voyage.Destination,
-                                            voyage.DateDeDepart,
-                                            voyage.DateDeFin,
-                                            voyage.PrixPersonne,
-                                            voyage.NombresParticipantsMax));
-                // pseudo ??
-
-                File.WriteAllText(CheminFichierVoya, contenuFichier.ToString());
-            }
         }
 
         private void EcrireFichierParticipants()
@@ -182,6 +140,52 @@ namespace Data
             }
         }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // A RAJOUTER AUSSI POUR DESTINATIONS VOYAGE
+
+        public void SelectionnerVoyage(Voyage voyage)
+        {
+            if (!this.voyages.Contains(voyage))
+            {
+                this.voyages.Add(voyage);
+            }
+            this.EcrireFichierVoyage();
+            EcrireFichierVoyage();
+        }
+
+
+
+        private void EcrireFichierVoyage()
+        {
+            var contenuFichier = new StringBuilder();
+            foreach (var voyage in this.voyages)
+            {
+                contenuFichier.AppendLine(string.Join(
+                                            SeparateurChamps.ToString(),
+                                            voyage.Destination,
+                                            voyage.DateDeDepart,
+                                            voyage.DateDeFin,
+                                            voyage.PrixPersonne,
+                                            voyage.NombresParticipantsMax));
+                // pseudo ??
+
+                File.WriteAllText(CheminFichierVoya, contenuFichier.ToString());
+            }
+        }
+
+        
 
 
 
