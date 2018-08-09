@@ -16,8 +16,9 @@ namespace Application
 		{
 			Console.WriteLine("Hello World!!!");
 			Console.WriteLine("Hello GTM!!!");
-
-            //OutilsData.EnregistrerParticipants();
+            Client cli = new Client();
+            OutilsApplication.Loggin(cli);
+            OutilsApplication.AffichageMenu();
         }
 	}
 }

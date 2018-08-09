@@ -10,5 +10,7 @@ namespace Metier
 	{
         string Pseudo { get; set;}
         string MotDePasse { get; set; }
+
+        bool Connexion(string pseudo,string mdp);
     }
 }
