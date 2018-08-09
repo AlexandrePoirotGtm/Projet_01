@@ -15,5 +15,10 @@ namespace Data
 		public int NuméroTéléphone { get; set; }
 		public string Pseudo { get; set; }
 		public string MotDePasse { get; set; }
-	}
+
+        bool ILogger.Connexion(string pseudo, string mdp)
+        {
+            return true;
+        }
+    }
 }
