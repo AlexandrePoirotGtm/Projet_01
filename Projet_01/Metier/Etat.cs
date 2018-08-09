@@ -8,5 +8,9 @@ namespace Metier
 {
 	enum Etat
 	{
+		EnAttente,
+		EnCours,
+		Refusee,
+		Aceptee
 	}
 }
