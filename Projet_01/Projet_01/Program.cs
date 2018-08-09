@@ -7,6 +7,7 @@ using System.IO;
 
 
 using Metier;
+using Data;
 namespace Application
 {
 	class Program

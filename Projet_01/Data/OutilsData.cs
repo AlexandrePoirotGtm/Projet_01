@@ -4,12 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Metier
+namespace Data
 {
-	public class Program
+	class OutilsData
 	{
-		static void Main(string[] args)
-		{
-		}
 	}
 }
