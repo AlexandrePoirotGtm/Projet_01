@@ -24,6 +24,11 @@ namespace Data
 		private List<Participant> partipants;
 		private List<Commerciaux> commerciaux;
 
+		public void RemplirClient()
+		{
+			
+		}
+
 
 	}
 }
