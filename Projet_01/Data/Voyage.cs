@@ -13,6 +13,7 @@ namespace Data
 		public double PrixPersonne { get; set; }
 		public int NombresParticipantsMax { get; set; }
 		public string Agence { get; set; }
+		public Destination Destination { get; set; }
 
 
 	}

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Data
 {
+
 	class OutilsData
 	{
 		const string CheminFichierDest = @"...\Destination.txt";

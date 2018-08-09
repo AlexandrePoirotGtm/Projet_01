@@ -12,7 +12,7 @@ namespace Data
 	{
 		public int NuméroTéléphone { get ; set; }
 		public string Adresse { get; set ; }
-        public string Age { get; set; }
+        public int Age { get; set; }
 		
 	}
 }
