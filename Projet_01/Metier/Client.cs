@@ -8,5 +8,8 @@ namespace Metier
 {
 	class Client : Personne
 	{
+        public int NumeroDeTelephone { get; set; }
+        public string Adresse { get; set; }
+        public bool Civilite { get; set; }
 	}
 }

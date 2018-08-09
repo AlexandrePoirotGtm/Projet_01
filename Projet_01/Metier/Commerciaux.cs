@@ -8,5 +8,7 @@ namespace Metier
 {
 	class Commerciaux : Personne
 	{
+        public string Pseudo { get; set; }
+        public string MotDePasse { get; set; }
 	}
 }

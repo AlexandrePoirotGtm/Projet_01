@@ -8,5 +8,7 @@ namespace Metier
 {
 	abstract class Personne
 	{
+        public string Prenom { get; set; }
+        public string Nom { get; set; }
 	}
 }
