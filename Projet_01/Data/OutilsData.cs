@@ -97,12 +97,13 @@ namespace Data
             {
                 string[] champs = ligneFichier.Split('\n');
                 var client = new Client();
-                client.Nom = champs[0];
-                client.Prenom = champs[1];
-                client.Adresse = champs[2];
+                client.Civilite = bool.Parse(champs[0]);
+                client.Nom = champs[1];
+                client.Prenom = champs[2];
+                client.Adresse = champs[3];
                 string num = client.NuméroTéléphone.ToString();
-                num = champs[3];
-                client.Civilite = bool.Parse(champs[4]);
+                num = champs[4];
+                
                 client.Pseudo = champs[5];
                 client.MotDePasse = champs[6];
 
@@ -117,11 +118,14 @@ namespace Data
 			{
 				contenuFichier.AppendLine(string.Join(
 											SeparateurChamps.ToString(),
-											client.Nom,
+                                            client.Civilite,
+                                            client.Nom,
 											client.Prenom,
 											client.Adresse,
 											client.NuméroTéléphone,
-											client.Civilite));
+                                            client.Pseudo,
+                                            client.MotDePasse
+											));
 				// pseudo ??
 
 				File.WriteAllText(CheminFichierCli, contenuFichier.ToString());

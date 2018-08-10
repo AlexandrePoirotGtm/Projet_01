@@ -59,7 +59,7 @@ namespace Application
                 switch (choix)
                 {
                     case "1":
-                        Console.WriteLine("C'est bon");
+                        OutilsMetier.ListerClients();
                         Console.ReadKey();
                         break;
                     case "2":

@@ -94,11 +94,13 @@ namespace Application
 		{
             string choix;
             Console.Clear();
-			AffichezMessage("\tMENU PRINCIPAL\n", ConsoleColor.Gray);
-			AffichezMessage("\n1- GESTION DES CLIENTS", ConsoleColor.Cyan);
-			AffichezMessage("\n2- GESTION DES VOYAGES", ConsoleColor.Cyan);
-			AffichezMessage("\n3- GESTION DES DOSSIER", ConsoleColor.Cyan);
-            AffichezMessage("\nQ- QUITTER L'APPLICATION\n\n", ConsoleColor.Cyan);
+			CenterText("\tMENU PRINCIPAL\n", ConsoleColor.Gray);
+            Console.WriteLine();
+            Console.WriteLine(new string('=', Console.WindowWidth));
+            CenterText("1- GESTION DES CLIENTS\n", ConsoleColor.Cyan);
+			CenterText("2- GESTION DES VOYAGES\n", ConsoleColor.Cyan);
+			CenterText("3- GESTION DES DOSSIER\n", ConsoleColor.Cyan);
+            CenterText("Q- QUITTER L'APPLICATION\n\n", ConsoleColor.Cyan);
             choix = Console.ReadLine();
             return choix;
 		}
@@ -107,11 +109,13 @@ namespace Application
         {
             string choix;
             Console.Clear();
-            AffichezMessage("\tGESTION DES CLIENTS\n", ConsoleColor.Gray);
-            AffichezMessage("\n1-LISTE DES CLIENTS", ConsoleColor.Cyan);
-            AffichezMessage("\n2-CREER UN NOUVEAU CLIENT", ConsoleColor.Cyan);
-            AffichezMessage("\n3- SUPPRIMER UN CLIENT", ConsoleColor.Cyan);
-            AffichezMessage("\nQ- REVENIR AU MENU PRINCIPAL\n\n", ConsoleColor.Cyan);
+            CenterText("\tGESTION DES CLIENTS\n", ConsoleColor.Gray);
+            Console.WriteLine();
+            Console.WriteLine(new string('=', Console.WindowWidth));
+            CenterText("1- LISTE DES CLIENTS\n", ConsoleColor.Cyan);
+            CenterText("2- CREER UN NOUVEAU CLIENT\n", ConsoleColor.Cyan);
+            CenterText("3- SUPPRIMER UN CLIENT\n", ConsoleColor.Cyan);
+            CenterText("Q- REVENIR AU MENU PRINCIPAL\n\n", ConsoleColor.Cyan);
             choix = Console.ReadLine();
             return choix;
         }
@@ -120,10 +124,12 @@ namespace Application
         {
             string choix;
             Console.Clear();
-            AffichezMessage("\tGESTION DES VOYAGES\n", ConsoleColor.Gray);
-            AffichezMessage("\n1-LISTE DES VOYAGES", ConsoleColor.Cyan);
-            AffichezMessage("\n3- RECHERCHER UN VOYAGE", ConsoleColor.Cyan);
-            AffichezMessage("\nQ- REVENIR AU MENU PRINCIPAL\n\n", ConsoleColor.Cyan);
+            CenterText("\tGESTION DES VOYAGES\n", ConsoleColor.Gray);
+            Console.WriteLine();
+            Console.WriteLine(new string('=', Console.WindowWidth));
+            CenterText("1- LISTE DES VOYAGES\n", ConsoleColor.Cyan);
+            CenterText("3- RECHERCHER UN VOYAGE\n", ConsoleColor.Cyan);
+            CenterText("Q- REVENIR AU MENU PRINCIPAL\n\n", ConsoleColor.Cyan);
             choix = Console.ReadLine();
             return choix;
         }
@@ -132,12 +138,14 @@ namespace Application
         {
             string choix;
             Console.Clear();
-            AffichezMessage("\tGESTION DES DOSSIERS\n", ConsoleColor.Gray);
-            AffichezMessage("\n1-LISTE DES DOSSIERS", ConsoleColor.Cyan);
-            AffichezMessage("\n3- RECHERCHER UN DOSSIER", ConsoleColor.Cyan);
-            AffichezMessage("\n3- CREER UN DOSSIER", ConsoleColor.Cyan);
-            AffichezMessage("\n3- SUPPRIMER UN DOSSIER", ConsoleColor.Cyan);
-            AffichezMessage("\nQ- REVENIR AU MENU PRINCIPAL\n\n", ConsoleColor.Cyan);
+            CenterText("\tGESTION DES DOSSIERS\n", ConsoleColor.Gray);
+            Console.WriteLine();
+            Console.WriteLine(new string('=', Console.WindowWidth));
+            CenterText("1- LISTE DES DOSSIERS\n", ConsoleColor.Cyan);
+            CenterText("2- RECHERCHER UN DOSSIER\n", ConsoleColor.Cyan);
+            CenterText("3- CREER UN DOSSIER\n", ConsoleColor.Cyan);
+            CenterText("3- SUPPRIMER UN DOSSIER\n", ConsoleColor.Cyan);
+            CenterText("Q- REVENIR AU MENU PRINCIPAL\n\n", ConsoleColor.Cyan);
             choix = Console.ReadLine();
             return choix;
         }
