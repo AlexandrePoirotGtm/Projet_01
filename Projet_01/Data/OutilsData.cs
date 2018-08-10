@@ -95,14 +95,14 @@ namespace Data
             //var contactsDansFichier = new List<Contact>();
             foreach (var ligneFichier in lignesFichier)
             {
-                string[] champs = ligneFichier.Split('\n');
+                string[] champs = ligneFichier.Split(';');
                 var client = new Client();
                 client.Civilite = champs[0];
                 client.Nom = champs[1];
                 client.Prenom = champs[2];
                 client.Adresse = champs[3];
-                string num = client.NuméroTéléphone.ToString();
-                num = champs[4];
+                //string num = client.NuméroTéléphone;
+                client.NuméroTéléphone = champs[4];
                 
                 client.Pseudo = champs[5];
                 client.MotDePasse = champs[6];

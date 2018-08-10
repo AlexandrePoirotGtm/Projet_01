@@ -20,7 +20,7 @@ namespace Metier
             Console.WriteLine(new string('-', Console.WindowWidth));
 
            // OutilsData outils = new OutilsData();
-            var listeClients = outils.GetListeClients();
+           // var listeClients = ;
 
             PosezQuestion("Mr ou Mme?", ConsoleColor.Green);
             leClient.Civilite = Console.ReadLine();
@@ -37,10 +37,11 @@ namespace Metier
             leClient.Pseudo = Console.ReadLine();
             PosezQuestion("Entrer le mMot de Passe", ConsoleColor.Green);
             leClient.MotDePasse = Console.ReadLine();
-            listeClients.Add(leClient);
+            outils.GetListeClients().Add(leClient);
             
 
             Console.WriteLine("Le nouveau Client a bien été ajouté\n");
+
             Console.ReadKey();
             // OutilsData.EnregistrerClient(leClient);
             return;
@@ -50,8 +51,8 @@ namespace Metier
         public static void ListerClients(OutilsData outils)
         {
             //OutilsData outils = new OutilsData();
-            var listeClients = outils.GetListeClients();
-            AfficherClients(listeClients);
+
+            AfficherClients(outils.GetListeClients());
         }
 
         private static void AfficherClients(List<Client> listeClients)
