@@ -21,16 +21,31 @@ namespace Application
             Client cli = new Client();
 			OutilsData outils = new OutilsData();
             OutilsApplication.Loggin();
-            OutilsApplication.AffichageMenu();
-            Console.ReadKey();
-          
 
+            bool continuer = true;
+            while (continuer)
+            {
+                var choix = OutilsApplication.AffichageMenu();
+                switch (choix)
+                {
+                    case "1":
+                        OutilsApplication.CenterText("GESTION DES CLIENTS");
+                        Console.ReadKey();
+                        break;
+                    case "2":
+                        OutilsApplication.CenterText("GESTION DES VOYAGES");
+                        break;
+                    case "3":
+                        OutilsApplication.CenterText("GESTION DES DOSSIERS");
+                        break;
 
-            
-            //OutilsData.LectureFichier();
-
-			
-
+                }
+            }
         }
+
+
+
+
+       
 	}
 }

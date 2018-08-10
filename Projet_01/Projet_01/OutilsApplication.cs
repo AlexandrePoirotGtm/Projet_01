@@ -59,9 +59,9 @@ namespace Application
 			string motDePasse;
 			OutilsData outilsD = new OutilsData();
 
-			CenterText("Bienvenue chez Bo'Voyage\n", ConsoleColor.Green);
+			CenterText("BIENVENUE CHEZ BoVoyages\n", ConsoleColor.Green);
 			CenterText("Veuillez vous Identifier\n", ConsoleColor.Green);
-			pseudo = PosezQuestionObligatoire("Votre pseudo : ", ConsoleColor.Green);
+			pseudo = PosezQuestionObligatoire("Pseudo : ", ConsoleColor.Green);
 			motDePasse = EcrireMDP();
 			while (!outilsD.Connexion(pseudo, motDePasse))
 			{
@@ -91,13 +91,16 @@ namespace Application
 			return mdp;
 		}
 
-		public static void AffichageMenu()
+		public static string AffichageMenu()
 		{
-			Console.Clear();
-			AffichezMessage("\tMENU\n", ConsoleColor.Gray);
-			AffichezMessage("\n1- Créer un client", ConsoleColor.Cyan);
-			AffichezMessage("\n2- Créér un voyage", ConsoleColor.Cyan);
-			AffichezMessage("\n3- Gérer un dossier", ConsoleColor.Cyan);
+            string choix;
+            Console.Clear();
+			AffichezMessage("\tMENU PRINCIPAL\n", ConsoleColor.Gray);
+			AffichezMessage("\n1- GESTION DES CLIENTS", ConsoleColor.Cyan);
+			AffichezMessage("\n2- GESTION DES VOYAGES", ConsoleColor.Cyan);
+			AffichezMessage("\n3- GESTION DES DOSSIER", ConsoleColor.Cyan);
+            choix = Console.ReadLine();
+            return choix;
 		}
 
 
