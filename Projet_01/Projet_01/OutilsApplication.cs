@@ -53,15 +53,17 @@ namespace Application
             Console.ResetColor();
         }
 
-        public static bool Loggin(IEnumerable<ILogger> List)
+        public static bool Loggin()
         {
             string pseudo;
             string motDePasse;
-            AffichezMessage("Bienvenue chez Bo'Voyage\n", ConsoleColor.Green);
+			OutilsData outilsD = new OutilsData();
+
+			AffichezMessage("Bienvenue chez Bo'Voyage\n", ConsoleColor.Green);
             AffichezMessage("Veuillez vous Identifier\n", ConsoleColor.Green);
             pseudo = PosezQuestionObligatoire("Votre pseudo : ",ConsoleColor.Green);
             motDePasse = PosezQuestionObligatoire("Votre Mot de passe : ",ConsoleColor.Green);
-            while(!utilisateur.Connexion(pseudo,motDePasse))
+            while(!outilsD.Connexion(pseudo,motDePasse))
             {
                 Console.Clear();
                 AffichezMessage("Pseudo ou Mot de passe invalide...veuillez Réessayer\n",ConsoleColor.Red);
@@ -80,5 +82,11 @@ namespace Application
             AffichezMessage("\n2- Créér un voyage",ConsoleColor.Cyan);
             AffichezMessage("\n3- Gérer un dossier",ConsoleColor.Cyan);
         }
-    }
+
+		public static void CenterText(string text)
+		{
+			int winWidth = (Console.WindowWidth / 2 - 15);
+			Console.WriteLine(new string(' ', winWidth) + $"{text.PadRight(30)}\n");
+		}
+	}
 }
