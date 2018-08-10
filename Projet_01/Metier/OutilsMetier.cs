@@ -11,7 +11,7 @@ namespace Metier
 	{
         public static void CreerClient()
        {
-            OutilsApplication.AffichezMessage("\n1- Créer un client", ConsoleColor.Cyan);
+            //OutilsApplication.AffichezMessage("\n1- Créer un client", ConsoleColor.Cyan);
         }
 
         public static void ListerClients()

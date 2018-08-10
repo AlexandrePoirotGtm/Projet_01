@@ -27,8 +27,6 @@ namespace Data
 		private List<Participant> participants { get; set; }
 		private List<Commerciaux> commerciaux { get; set; }
 
-
-
 		// =========================== GESTION DES CLIENTS=============================//
 		// ===================== Déclaration d'un nouveau client ======================//
 		//=============== A METTRE PEUT-ETRE PLUTOT DANS LA COUCHE METIER ============//
@@ -338,11 +336,20 @@ namespace Data
 
 		public bool Connexion(string pseudo, string mdp)
 		{
-			foreach (ILogger log in commerciaux)
+			Commerciaux George = new Commerciaux();
+			George.Pseudo = pseudo;
+			George.MotDePasse = mdp;
+			commerciaux.Add(George);
+
+			foreach (Commerciaux com in commerciaux)
+			{
+				Console.WriteLine(com.Pseudo);
+			}
+			/*foreach (ILogger log in commerciaux)
 			{
 				if (log.Connexion(pseudo, mdp))
 					return true;
-			}
+			}*/
 			return false;
 		}
 
