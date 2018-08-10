@@ -98,6 +98,7 @@ namespace Application
 			AffichezMessage("\n1- GESTION DES CLIENTS", ConsoleColor.Cyan);
 			AffichezMessage("\n2- GESTION DES VOYAGES", ConsoleColor.Cyan);
 			AffichezMessage("\n3- GESTION DES DOSSIER", ConsoleColor.Cyan);
+            AffichezMessage("\nQ- QUITTER L'APPLICATION", ConsoleColor.Cyan);
             choix = Console.ReadLine();
             return choix;
 		}

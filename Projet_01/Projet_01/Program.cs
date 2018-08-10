@@ -36,6 +36,9 @@ namespace Application
                     case "3":
                         OutilsApplication.CenterText("GESTION DES DOSSIERS");
                         break;
+                    case "Q":
+                        OutilsApplication.CenterText("QUITTER");
+                        return;
 
                 }
             }
