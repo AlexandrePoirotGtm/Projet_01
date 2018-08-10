@@ -43,8 +43,12 @@ namespace Metier
 
         public static void ListerClients(OutilsData outils)
         {
-            //OutilsData outils = new OutilsData();
             Console.Clear();
+            Console.WriteLine();
+            CenterText("LISTE DES CLIENTS");
+            Console.WriteLine();
+            Console.WriteLine(new string('=', Console.WindowWidth));
+            Console.WriteLine();
             AfficherClients(outils.GetListeClients());
         }
 
@@ -148,15 +152,15 @@ namespace Metier
             }
 
             Console.ForegroundColor = ConsoleColor.Blue;
-            //Console.ReadKey();
         }
-
-
 
         public static void ListerVoyages(OutilsData outils)
         {
-            //OutilsData outils = new OutilsData();
-           // var listeVoyages = outils.GetListeVoyages();
+            Console.Clear();
+            Console.WriteLine();
+            CenterText("LISTE DES VOYAGES");
+            Console.WriteLine();
+            Console.WriteLine(new string('=', Console.WindowWidth));
             AfficherVoyages(outils.GetListeVoyages());
         }
 
@@ -164,36 +168,86 @@ namespace Metier
         public static void CreerNouveauVoyage()
         {
             Console.Clear();
-            Console.WriteLine("EN CONSTRUCTION .......");
-            Console.ReadKey();
+            Console.WriteLine();
+            CenterText("EN CONSTRUCTION .......");
         }
 
 
         public static void RechercherVoyage()
         {
             Console.Clear();
-            Console.WriteLine("EN CONSTRUCTION .......");
-            Console.ReadKey();
+            Console.WriteLine();
+            CenterText("EN CONSTRUCTION .......");
         }
 
 
         public static void SelectionnerVoyage()
         {
             Console.Clear();
-            Console.WriteLine("EN CONSTRUCTION .......");
-            Console.ReadKey();
+            Console.WriteLine();
+            CenterText("EN CONSTRUCTION .......");
         }
 
         // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
         // ===============================  METHODES DE MANIPULATION DES DOSSIERS ++++++++++++++++++++++++++++++++++//
 
-        public static void CreerDossier()
-        {
 
+        private static void AfficherDossier()
+        {
+            Console.Write("{0,-20} | ", "NOM CLIENT");
+            Console.Write("{0,-10} |", "NOM VOYAGE");
+            Console.Write("{0,-10} |", "ETAT");
+            Console.Write("{0,-10} |", "NB PARTICIPANTS");
+            Console.Write("{0,-10} |", "PRIX TOTAL");
+            Console.Write("{0,-10} |", "NUM ID");
+
+            Console.WriteLine();
+            Console.WriteLine(new string('=', Console.WindowWidth));
         }
 
+        public static void ListerDossiers(OutilsData outils)
+        {
+            Console.Clear();
+            Console.WriteLine();
+            CenterText("LISTE DES DOSSIERS");
+            Console.WriteLine();
+            Console.WriteLine(new string('=', Console.WindowWidth));
+            AfficherDossier();
+        }
 
+        public static void RechercherDossier()
+        {
+            Console.Clear();
+            Console.WriteLine();
+            CenterText("EN CONSTRUCTION .......");
+            Console.ReadKey();
+        }
 
+        public static void CreerDossier()
+        {
+            Console.Clear();
+            Console.WriteLine();
+            CenterText("EN CONSTRUCTION .......");
+            Console.ReadKey();
+        }
+
+        public static void SupprimerDossier()
+        {
+            Console.Clear();
+            Console.WriteLine();
+            CenterText("EN CONSTRUCTION .......");
+            Console.ReadKey();
+        }
+
+        // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
+        //===================================== OUTILS CONSOLE  =========================//
+        // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
+
+        public static void CenterText(string text)
+        {
+            int winWidth = (Console.WindowWidth / 2 - 15);
+            Console.WriteLine(new string(' ', winWidth) + $"{text.PadRight(30)}\n");
+        }
 
 
         public static string PosezQuestion(string question, ConsoleColor couleur)

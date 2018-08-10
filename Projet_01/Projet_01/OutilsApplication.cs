@@ -94,7 +94,8 @@ namespace Application
 		{
             string choix;
             Console.Clear();
-			CenterText("\tMENU PRINCIPAL\n", ConsoleColor.Gray);
+            Console.WriteLine();
+            CenterText("\tMENU PRINCIPAL\n", ConsoleColor.Gray);
             Console.WriteLine();
             Console.WriteLine(new string('=', Console.WindowWidth));
             CenterText("1- GESTION DES CLIENTS\n", ConsoleColor.Cyan);
@@ -109,6 +110,7 @@ namespace Application
         {
             string choix;
             Console.Clear();
+            Console.WriteLine();
             CenterText("\tGESTION DES CLIENTS\n", ConsoleColor.Gray);
             Console.WriteLine();
             Console.WriteLine(new string('=', Console.WindowWidth));
@@ -124,6 +126,7 @@ namespace Application
         {
             string choix;
             Console.Clear();
+            Console.WriteLine();
             CenterText("\tGESTION DES VOYAGES\n", ConsoleColor.Gray);
             Console.WriteLine();
             Console.WriteLine(new string('=', Console.WindowWidth));
@@ -139,13 +142,14 @@ namespace Application
         {
             string choix;
             Console.Clear();
+            Console.WriteLine();
             CenterText("\tGESTION DES DOSSIERS\n", ConsoleColor.Gray);
             Console.WriteLine();
             Console.WriteLine(new string('=', Console.WindowWidth));
             CenterText("1- LISTE DES DOSSIERS\n", ConsoleColor.Cyan);
             CenterText("2- RECHERCHER UN DOSSIER\n", ConsoleColor.Cyan);
             CenterText("3- CREER UN DOSSIER\n", ConsoleColor.Cyan);
-            CenterText("3- SUPPRIMER UN DOSSIER\n", ConsoleColor.Cyan);
+            CenterText("4- SUPPRIMER UN DOSSIER\n", ConsoleColor.Cyan);
             CenterText("Q- REVENIR AU MENU PRINCIPAL\n\n", ConsoleColor.Cyan);
             choix = Console.ReadLine();
             return choix;

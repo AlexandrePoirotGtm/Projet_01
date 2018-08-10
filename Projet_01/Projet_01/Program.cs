@@ -32,7 +32,7 @@ namespace Application
                         MenuVoyages(outils);
                         break;
                     case "3":
-                        MenuDossiers();
+                        MenuDossiers(outils);
                         break;
                     case "Q":
                     case "q":
@@ -109,7 +109,7 @@ namespace Application
             }
         }
 
-        static void MenuDossiers()
+        static void MenuDossiers(OutilsData outils)
         {
             bool continuer = true;
             while (continuer)
@@ -119,16 +119,20 @@ namespace Application
                 {
                     case "1":
                         OutilsApplication.CenterText("LISTE DES DOSSIERS\n");
+                        OutilsMetier.ListerDossiers(outils);
                         Console.ReadKey();
                         break;
                     case "2":
                         OutilsApplication.CenterText("RECHERCHER UN DOSSIER\n");
+                        OutilsMetier.RechercherDossier();
                         break;
                     case "3":
                         OutilsApplication.CenterText("CREER UN DOSSIER\n");
+                        OutilsMetier.CreerDossier();
                         break;
                     case "4":
                         OutilsApplication.CenterText("SUPPRIMER UN DOSSIER\n");
+                        OutilsMetier.SupprimerDossier();
                         break;
                     case "Q":
                     case "q":
