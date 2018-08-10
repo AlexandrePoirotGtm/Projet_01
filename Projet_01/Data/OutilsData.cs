@@ -21,8 +21,8 @@ namespace Data
 		const char SeparateurChamps2 = '§';
 
 
-		private List<Destination> destinations = new List<Destination>();
-		private List<Voyage> voyages = new List<Voyage>();
+		public List<Destination> destinations = new List<Destination>();
+		public List<Voyage> voyages = new List<Voyage>();
 		private List<Dossier> dossiers = new List<Dossier>();
 		private List<Client> clients = new List<Client>();
 		private List<Participant> participants = new List<Participant>();
@@ -282,14 +282,14 @@ namespace Data
             {
                 contenuFichier.AppendLine(string.Join(
                                             SeparateurChamps.ToString(),
-                                            destination.Description,
                                             destination.Nom,
+                                            destination.Description,
+                                            destination.Continent,
                                             destination.Pays,
-                                            destination.Region,
-                                            destination.Continent));
+                                            destination.Region));
 
 
-                File.WriteAllText(CheminFichierDest, contenuFichier.ToString());
+				File.WriteAllText(CheminFichierDest, contenuFichier.ToString());
             }
         }
 
@@ -425,9 +425,13 @@ namespace Data
                     var champs = ligne.Split(SeparateurChamps);
 				 
                     var voyage = new Voyage();
-                    voyage.DateDeDepart = DateTime.Parse(champs[0]);
-                    voyage.DateDeFin = DateTime.Parse(champs[1]);
-                    voyage.PrixPersonne = double.Parse(champs[2]);
+                    voyage.DateDeDepart = string.IsNullOrEmpty(champs[0])
+										? 	(DateTime?)null
+										: DateTime.Parse(champs[0]);
+                    voyage.DateDeFin = string.IsNullOrEmpty(champs[1])
+										? (DateTime?)null
+										: DateTime.Parse(champs[1]);
+				voyage.PrixPersonne = double.Parse(champs[2]);
                     voyage.NombresParticipantsMax = int.Parse(champs[3]);
                     voyage.Agence = champs[4];
 					voyage.Destination = voyage.RecupDest(champs[5],SeparateurChamps2);
@@ -448,7 +452,7 @@ namespace Data
                                             voyage.DateDeFin,
                                             voyage.PrixPersonne,
                                             voyage.NombresParticipantsMax,
-                                            voyage.Agence,voyage.SaveDest(SeparateurChamps2)));
+                                            voyage.Agence,voyage.SaveDest(SeparateurChamps2).ToString()));
                 File.WriteAllText(CheminFichierVoya, contenuFichier.ToString());
             }
         }
