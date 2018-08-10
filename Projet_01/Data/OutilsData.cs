@@ -106,7 +106,7 @@ namespace Data
 
 		public void EcrireFichierClient()
 		{
-			var contenuFichier = new StringBuilder();
+            var contenuFichier = new StringBuilder();
 			foreach (var client in this.clients)
 			{
 				contenuFichier.AppendLine(string.Join(
@@ -119,7 +119,6 @@ namespace Data
                                             client.Pseudo,
                                             client.MotDePasse
 											));
-               
                 File.WriteAllText(CheminFichierCli, contenuFichier.ToString());
 			}
 		}
