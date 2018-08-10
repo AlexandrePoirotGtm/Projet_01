@@ -9,6 +9,9 @@ namespace Metier
 {
 	public static class OutilsMetier
 	{
+
+        // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
+        // ===============================  METHODES DE MANIPULATION DES CLIENTS ++++++++++++++++++++++++++++++++++//
         public static void CreerClient()
        {
             //OutilsApplication.AffichezMessage("\n1- Créer un client", ConsoleColor.Cyan);
@@ -56,7 +59,31 @@ namespace Metier
             //Console.ReadKey();
         }
 
+        public static void SupprimerClients()
+        {
 
+        }
+
+        // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
+        // ===============================  METHODES DE MANIPULATION DES VOYAGES ++++++++++++++++++++++++++++++++++//
+
+        public static void ListerVoyages()
+        {
+
+        }
+
+        public static void RechercherVoyage()
+        {
+
+        }
+
+        public static void SelectionnerVoyage()
+        {
+
+        }
+
+        // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
+        // ===============================  METHODES DE MANIPULATION DES DOSSIERS ++++++++++++++++++++++++++++++++++//
 
         public static void CreerDossier()
         {
@@ -65,10 +92,7 @@ namespace Metier
 
 
 
-        public static void SelectionnerVoyage(Voyage voyage)
-        {
-           
-        }
+        
 
 
 
