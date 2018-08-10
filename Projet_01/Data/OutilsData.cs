@@ -336,6 +336,8 @@ namespace Data
 
 		public bool Connexion(string pseudo, string mdp)
 		{
+			OutilsData outils = new OutilsData();
+			
 			Commerciaux George = new Commerciaux();
 			George.Pseudo = pseudo;
 			George.MotDePasse = mdp;
@@ -345,11 +347,11 @@ namespace Data
 			{
 				Console.WriteLine(com.Pseudo);
 			}
-			/*foreach (ILogger log in commerciaux)
+			foreach (ILogger log in commerciaux)
 			{
 				if (log.Connexion(pseudo, mdp))
 					return true;
-			}*/
+			}
 			return false;
 		}
 
