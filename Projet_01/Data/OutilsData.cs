@@ -28,7 +28,12 @@ namespace Data
 		private List<Commerciaux> commerciaux = new List<Commerciaux>();
 
 		public OutilsData()
-		{		
+		{
+            InitialiserListeDestinations();
+            InitialiserListeClients();
+            InitialiserListeParticipants();
+            InitialiserListeCommerciaux();
+            InitialiserListeVoyages();
 		}
 
 		// =========================== GESTION DES CLIENTS=============================//
@@ -37,11 +42,15 @@ namespace Data
 
 		private void InitialiserListeClients()
 		{
-			if (this.clients == null)
+			if (File.Exists(CheminFichierCli))
 			{
 				LireFichierClients();
 			}
-		}
+            else
+            {
+                File.Create(CheminFichierCli);
+            }
+        }
 
 		public IEnumerable<Client> GetListeClients()
 		{
@@ -139,11 +148,15 @@ namespace Data
 
 		private void InitialiserListeParticipants()
 		{
-			if (this.participants == null)
+			if (File.Exists(CheminFichierPart))
 			{
 				LireFichierParticipants();
 			}
-		}
+            else
+            {
+                File.Create(CheminFichierPart);
+            }
+        }
 
 		public IEnumerable<Participant> GetListeParticipants()
 		{
@@ -215,11 +228,15 @@ namespace Data
 
 		private void InitialiserListeDestinations()
 		{
-			if (this.destinations == null)
+			if (File.Exists(CheminFichierDest))
 			{
 				LireFichierDestinations();
 			}
-		}
+            else
+            {
+                File.Create(CheminFichierDest);
+            }
+        }
 
         public IEnumerable<Destination> GetListeDestinations()
         {
@@ -289,11 +306,11 @@ namespace Data
 
         public IEnumerable<Commerciaux> GetListeCommerciaux()
         {
-            InitialiserListeCommerciauxs();
+            InitialiserListeCommerciaux();
             return this.commerciaux;
         }
 
-        private void InitialiserListeCommerciauxs()
+        private void InitialiserListeCommerciaux()
         {
             if (File.Exists(CheminFichierComm))
             {
@@ -367,9 +384,13 @@ namespace Data
 
         private void InitialiserListeVoyages()
         {
-            if (this.voyages == null)
+            if (File.Exists(CheminFichierVoya))
             {
                 LireFichierVoyages();
+            }
+            else
+            {
+                File.Create(CheminFichierVoya);
             }
         }
 
