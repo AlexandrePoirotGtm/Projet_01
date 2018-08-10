@@ -142,10 +142,6 @@ namespace Data
 		//}
 
 
-
-
-
-
 		// ========================= GESTION DES PARTICIPANTS =======================//
 		// ==========  === = ======== ========= ===== ===== ==========//
 
@@ -174,7 +170,14 @@ namespace Data
 			EcrireFichierParticipants();
 		}
 
-		private void EcrireFichierParticipants()
+        public void SupprimerParticipants(Participant participant)
+        {
+            InitialiserListeParticipants();
+            this.participants.Remove(participant);
+            this.EcrireFichierParticipants();
+        }
+
+        private void EcrireFichierParticipants()
 		{
 			var contenuFichier = new StringBuilder();
 			foreach (var participant in this.participants)
@@ -186,7 +189,7 @@ namespace Data
 											participant.Prenom,
 											participant.NuméroTéléphone,
 											participant.Adresse));
-				// pseudo ??
+				
 
 				File.WriteAllText(CheminFichierPart, contenuFichier.ToString());
 			}
@@ -216,6 +219,82 @@ namespace Data
 		}
 
 
+        // ========================= GESTION DES DESTINATIONS =======================//
+        // ==========  === = ======== ========= ===== ===== ==========//
+
+
+        private void InitialiserListeDestinations()
+        {
+            if (this.destinations == null)
+            {
+                LireFichierDestinations();
+            }
+        }
+
+        public IEnumerable<Participant> GetListeParticipants()
+        {
+            InitialiserListeParticipants();
+            return this.participants;
+        }
+
+        public void EnregistrerParticipants(Participant participant)
+        {
+            if (!this.participants.Contains(participant))
+            {
+                this.participants.Add(participant);
+            }
+            this.EcrireFichierParticipants();
+            EcrireFichierParticipants();
+        }
+
+        public void SupprimerParticipants(Participant participant)
+        {
+            InitialiserListeParticipants();
+            this.participants.Remove(participant);
+            this.EcrireFichierParticipants();
+        }
+
+        private void EcrireFichierParticipants()
+        {
+            var contenuFichier = new StringBuilder();
+            foreach (var participant in this.participants)
+            {
+                contenuFichier.AppendLine(string.Join(
+                                            SeparateurChamps.ToString(),
+                                            participant.Age,
+                                            participant.Nom,
+                                            participant.Prenom,
+                                            participant.NuméroTéléphone,
+                                            participant.Adresse));
+
+
+                File.WriteAllText(CheminFichierPart, contenuFichier.ToString());
+            }
+        }
+
+        private void LireFichierDestinations()
+        {
+            this.destinations = new List<Destination>();
+            if (File.Exists(CheminFichierDest))
+            {
+                var lignes = File.ReadAllLines(CheminFichierDest);
+                foreach (var ligne in lignes)
+                {
+                    var champs = ligne.Split(SeparateurChamps);
+
+                    var destination = new Destination();
+                    destination.Nom = champs[0];
+                    destination.Description = champs[1];
+                    destination.Continent = champs[2];
+                    destination.Pays= champs[3];
+                    destination.Region = champs[4];
+
+                    //client.Civilite = champs[4]);  Pseudo ? Mot de passe ?
+
+                    destinations.Add(destination);
+                }
+            }
+        }
 
 
 
@@ -224,11 +303,9 @@ namespace Data
 
 
 
+        // A RAJOUTER AUSSI POUR DESTINATIONS VOYAGE
 
-
-		// A RAJOUTER AUSSI POUR DESTINATIONS VOYAGE
-
-		public void SelectionnerVoyage(Voyage voyage)
+        public void SelectionnerVoyage(Voyage voyage)
 		{
 			if (!this.voyages.Contains(voyage))
 			{
