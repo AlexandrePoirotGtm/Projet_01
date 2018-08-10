@@ -419,7 +419,7 @@ namespace Data
         public bool Connexion(string pseudo, string mdp)
 		{
 			OutilsData outils = new OutilsData();
-			
+			outils.InitialiserListeCommerciauxs();
 			Commerciaux George = new Commerciaux();
 			George.Pseudo = pseudo;
 			George.MotDePasse = mdp;
