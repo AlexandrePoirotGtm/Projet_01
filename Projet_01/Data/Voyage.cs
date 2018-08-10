@@ -29,10 +29,10 @@ namespace Data
 			return Destination;
 		}
 
-		public StringBuilder SaveDest()
+		public StringBuilder SaveDest(char SeparateurChamps)
 		{
 			var detailDest = new StringBuilder();
-			detailDest.AppendLine(string.Join('*'.ToString(),
+			detailDest.AppendLine(string.Join(SeparateurChamps.ToString(),
 												Destination.Nom,
 												Destination.Description,
 												Destination.Continent,
