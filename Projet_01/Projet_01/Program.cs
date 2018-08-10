@@ -12,8 +12,6 @@ namespace Application
 {
 	class Program
 	{
-        static List<Client> clients = new List<Client>();
-        
         static void Main(string[] args)
 		{
 			//Console.WriteLine("Hello World!!!");
