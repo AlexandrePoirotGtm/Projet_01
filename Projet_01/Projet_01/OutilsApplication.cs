@@ -51,6 +51,7 @@ namespace Application
             Console.ForegroundColor = couleur;
             Console.Write(message);
             Console.ResetColor();
+            CenterText(message);
         }
 
         public static bool Loggin()

@@ -231,44 +231,44 @@ namespace Data
             }
         }
 
-        public IEnumerable<Participant> GetListeParticipants()
+        public IEnumerable<Destination> GetListeDestinations()
         {
-            InitialiserListeParticipants();
-            return this.participants;
+            InitialiserListeDestinations();
+            return this.destinations;
         }
 
-        public void EnregistrerParticipants(Participant participant)
+        public void EnregistrerDestinations(Destination destination)
         {
-            if (!this.participants.Contains(participant))
+            if (!this.destinations.Contains(destination))
             {
-                this.participants.Add(participant);
+                this.destinations.Add(destination);
             }
-            this.EcrireFichierParticipants();
-            EcrireFichierParticipants();
+            this.EcrireFichierDestinations();
+            EcrireFichierDestinations();
         }
 
-        public void SupprimerParticipants(Participant participant)
+        public void SupprimerDestinations(Destination destination)
         {
-            InitialiserListeParticipants();
-            this.participants.Remove(participant);
-            this.EcrireFichierParticipants();
+            InitialiserListeDestinations();
+            this.destinations.Remove(destination);
+            this.EcrireFichierDestinations();
         }
 
-        private void EcrireFichierParticipants()
+        private void EcrireFichierDestinations()
         {
             var contenuFichier = new StringBuilder();
-            foreach (var participant in this.participants)
+            foreach (var destination in this.destinations)
             {
                 contenuFichier.AppendLine(string.Join(
                                             SeparateurChamps.ToString(),
-                                            participant.Age,
-                                            participant.Nom,
-                                            participant.Prenom,
-                                            participant.NuméroTéléphone,
-                                            participant.Adresse));
+                                            destination.Description,
+                                            destination.Nom,
+                                            destination.Pays,
+                                            destination.Region,
+                                            destination.Continent));
 
 
-                File.WriteAllText(CheminFichierPart, contenuFichier.ToString());
+                File.WriteAllText(CheminFichierDest, contenuFichier.ToString());
             }
         }
 
