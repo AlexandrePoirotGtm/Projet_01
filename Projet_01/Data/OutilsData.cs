@@ -36,6 +36,35 @@ namespace Data
             InitialiserListeVoyages();
 		}
 
+		 ~OutilsData()
+		{
+			foreach(Client client in clients)
+			{
+				EnregistrerClient(client);
+			}
+
+			foreach (Destination dest in destinations)
+			{
+				EnregistrerDestinations(dest);
+			}
+
+			foreach (Voyage voyage in voyages)
+			{
+				EnregistrerVoyages(voyage);
+			}
+
+			foreach (Participant participant in participants)
+			{
+				EnregistrerParticipants(participant);
+			}
+
+			foreach (Commerciaux commercial in commerciaux)
+			{
+				EnregistrerCommerciaux(commercial);
+			}
+
+		}
+
 		// =========================== GESTION DES CLIENTS=============================//
 		// ===================== Déclaration d'un nouveau client ======================//
 		//=============== A METTRE PEUT-ETRE PLUTOT DANS LA COUCHE METIER ============//
