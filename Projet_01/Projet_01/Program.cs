@@ -20,7 +20,7 @@ namespace Application
 			Console.WriteLine("Hello GTM!!!");
             Client cli = new Client();
 			OutilsData outils = new OutilsData();
-            OutilsApplication.Loggin(outils.get);
+            OutilsApplication.Loggin(outils.GetListeClients());
             OutilsApplication.AffichageMenu();
 
             //OutilsData.LectureFichier();
