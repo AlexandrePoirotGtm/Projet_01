@@ -63,11 +63,12 @@ namespace Application
                         Console.ReadKey();
                         break;
                     case "2":
-                        OutilsApplication.CenterText("CREER UN CLIENT\n");
                         OutilsMetier.CreerClient();
+                        Console.ReadKey();
                         break;
                     case "3":
-                        OutilsApplication.CenterText("SUPPRIMER UN CLIENT\n");
+                        OutilsMetier.SupprimerClients();
+                        Console.ReadKey();
                         break;
                     case "Q":
                     case "q":
@@ -88,11 +89,11 @@ namespace Application
                 switch (choix)
                 {
                     case "1":
-                        OutilsApplication.CenterText("LISTE DES VOYAGES\n");
+                        OutilsMetier.ListerVoyages();
                         Console.ReadKey();
                         break;
                     case "2":
-                        OutilsApplication.CenterText("RECHERCHER UN VOYAGE\n");
+                        OutilsMetier.RechercherVoyage();
                         OutilsMetier.CreerClient();
                         break;
                     case "Q":
