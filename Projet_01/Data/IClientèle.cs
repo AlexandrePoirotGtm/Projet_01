@@ -8,7 +8,7 @@ namespace Data
 {
 	public interface IClientèle
 	{
-		int NuméroTéléphone { get; set; }
+		string NuméroTéléphone { get; set; }
 		string Adresse { get; set; }
 
 

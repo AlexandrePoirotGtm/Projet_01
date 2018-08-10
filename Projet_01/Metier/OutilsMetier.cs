@@ -12,39 +12,49 @@ namespace Metier
 
         // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
         // ===============================  METHODES DE MANIPULATION DES CLIENTS ++++++++++++++++++++++++++++++++++//
-        public static void CreerClient()
+        public static void CreerClient(OutilsData outils)
         {
             Console.Clear();
             Console.WriteLine("AJOUTER UN CONTACT\n");
             var leClient = new Client();
             Console.WriteLine(new string('-', Console.WindowWidth));
 
-            OutilsData outils = new OutilsData();
+           // OutilsData outils = new OutilsData();
             var listeClients = outils.GetListeClients();
+
+            PosezQuestion("Mr ou Mme?", ConsoleColor.Green);
+            leClient.Civilite = Console.ReadLine();
+            
             PosezQuestion("Entrer le Nom du Client", ConsoleColor.Green);
             leClient.Nom = Console.ReadLine();
             PosezQuestion("Entrer le Prénom du Client", ConsoleColor.Green);
             leClient.Prenom = Console.ReadLine();
-                listeClients.Add(leClient);
+            PosezQuestion("Entrer l'Adresse", ConsoleColor.Green);
+            leClient.Adresse = Console.ReadLine();
+            PosezQuestion("Entrer le numéro de Tel du Client", ConsoleColor.Green);
+            leClient.NuméroTéléphone = Console.ReadLine();
+            PosezQuestion("Entrer votre Pseudo", ConsoleColor.Green);
+            leClient.Pseudo = Console.ReadLine();
+            PosezQuestion("Entrer le mMot de Passe", ConsoleColor.Green);
+            leClient.MotDePasse = Console.ReadLine();
+            listeClients.Add(leClient);
             
 
             Console.WriteLine("Le nouveau Client a bien été ajouté\n");
             Console.ReadKey();
-           // OutilsData.EnregistrerClient(leClient);
-
+            // OutilsData.EnregistrerClient(leClient);
+            return;
         }
 
 
-
-
-        public static void ListerClients()
+        public static void ListerClients(OutilsData outils)
         {
-            OutilsData outils = new OutilsData();
+            //OutilsData outils = new OutilsData();
             var listeClients = outils.GetListeClients();
             AfficherClients(listeClients);
         }
 
-        private static void AfficherClients(IEnumerable<Client> listeClients)
+        private static void AfficherClients(List<Client> listeClients)
         {
             Console.Write("{0,-3} | ", "ID");
             Console.Write("{0,-5} |", "M/Mme");
@@ -80,7 +90,7 @@ namespace Metier
 
 
 
-        public static void SupprimerClients()
+        public static void SupprimerClients(OutilsData outils)
         {
 
         }

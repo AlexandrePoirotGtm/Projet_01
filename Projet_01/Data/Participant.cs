@@ -10,7 +10,7 @@ namespace Data
 {
 	public class Participant : Personne ,IClientèle 
 	{
-		public int NuméroTéléphone { get ; set; }
+		public string NuméroTéléphone { get ; set; }
 		public string Adresse { get; set ; }
         public int Age { get; set; }
 		

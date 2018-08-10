@@ -27,7 +27,7 @@ namespace Application
                 switch (choix)
                 {
                     case "1":
-                        MenuClients();                     
+                        MenuClients(outils);                     
                         break;
                     case "2":
                         MenuVoyages();
@@ -50,7 +50,7 @@ namespace Application
         }
 
 
-        static void MenuClients()
+        static void MenuClients(OutilsData outils)
         {
             bool continuer = true;
             while (continuer)
@@ -59,15 +59,15 @@ namespace Application
                 switch (choix)
                 {
                     case "1":
-                        OutilsMetier.ListerClients();
+                        OutilsMetier.ListerClients(outils);
                         Console.ReadKey();
                         break;
                     case "2":
-                        OutilsMetier.CreerClient();
+                        OutilsMetier.CreerClient(outils);
                         Console.ReadKey();
                         break;
                     case "3":
-                        OutilsMetier.SupprimerClients();
+                        OutilsMetier.SupprimerClients(outils);
                         Console.ReadKey();
                         break;
                     case "Q":
@@ -119,15 +119,12 @@ namespace Application
                         break;
                     case "2":
                         OutilsApplication.CenterText("RECHERCHER UN DOSSIER\n");
-                        OutilsMetier.CreerClient();
                         break;
                     case "3":
                         OutilsApplication.CenterText("CREER UN DOSSIER\n");
-                        OutilsMetier.CreerClient();
                         break;
                     case "4":
                         OutilsApplication.CenterText("SUPPRIMER UN DOSSIER\n");
-                        OutilsMetier.CreerClient();
                         break;
                     case "Q":
                     case "q":

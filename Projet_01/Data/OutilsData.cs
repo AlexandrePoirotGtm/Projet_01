@@ -97,7 +97,7 @@ namespace Data
             {
                 string[] champs = ligneFichier.Split('\n');
                 var client = new Client();
-                client.Civilite = bool.Parse(champs[0]);
+                client.Civilite = champs[0];
                 client.Nom = champs[1];
                 client.Prenom = champs[2];
                 client.Adresse = champs[3];
