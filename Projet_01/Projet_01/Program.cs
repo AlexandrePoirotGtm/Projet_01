@@ -24,8 +24,12 @@ namespace Application
             OutilsApplication.AffichageMenu();
             Console.ReadKey();
 
-           
 
+             void centerText(string text)
+            {
+                int winWidth = (Console.WindowWidth / 2 - 15);
+                Console.WriteLine(new string(' ', winWidth) + $"{text.PadRight(30)}\n");
+            }
             //OutilsData.LectureFichier();
 
 
