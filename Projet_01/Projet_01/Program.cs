@@ -94,7 +94,7 @@ namespace Application
                         break;
                     case "2":
                         OutilsMetier.RechercherVoyage();
-                        OutilsMetier.CreerClient();
+                        Console.ReadKey();
                         break;
                     case "Q":
                     case "q":
