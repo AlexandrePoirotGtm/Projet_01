@@ -448,7 +448,7 @@ namespace Data
                                             voyage.DateDeFin,
                                             voyage.PrixPersonne,
                                             voyage.NombresParticipantsMax,
-                                            voyage.Agence,voyage.SaveDest()));
+                                            voyage.Agence,voyage.SaveDest(SeparateurChamps2)));
                 File.WriteAllText(CheminFichierVoya, contenuFichier.ToString());
             }
         }
