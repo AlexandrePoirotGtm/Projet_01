@@ -14,7 +14,7 @@ namespace Data
 
         bool ILogger.Connexion(string pseudo, string mdp)
         {
-            return true;
+			return(pseudo == Pseudo && MotDePasse == mdp);
         }
     }
 }
