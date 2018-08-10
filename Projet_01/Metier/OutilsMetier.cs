@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Data;
 
 namespace Metier
 {
@@ -24,10 +24,13 @@ namespace Metier
 
         }
 
-        public static void SelectionnerVoyage()
-        {
 
+
+        public static void SelectionnerVoyage(Voyage voyage)
+        {
+           
         }
+
 
 
     }

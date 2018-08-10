@@ -17,7 +17,7 @@ namespace Data
 		const string CheminFichierPart = @"...\Participants.txt";
 		const string CheminFichierComm = @"...\Commerciaux.txt";
 
-		const char SeparateurChamps = '\n';
+		const char SeparateurChamps = ';';
 
 
 		private List<Destination> destinations { get; set; }
@@ -67,38 +67,27 @@ namespace Data
 		{
 			// Lire un fichier
 			//var cheminFichier = @"...\Clients.txt";
-			if (File.Exists(CheminFichierCli))
-			{
+			
 				IEnumerable<string> lignesFichier = File.ReadLines(CheminFichierCli);
-				//var contactsDansFichier = new List<Contact>();
-				foreach (var ligneFichier in lignesFichier)
-				{
-					string[] champs = ligneFichier.Split('\n');
-					var client = new Client();
-					client.Nom = champs[0];
-					client.Prenom = champs[1];
-					client.Adresse = champs[2];
-					string num = client.NuméroTéléphone.ToString();
-					num = champs[3];
-					//client.Civilite = champs[4]);  Pseudo ? Mot de passe ?
+            //var contactsDansFichier = new List<Contact>();
+            foreach (var ligneFichier in lignesFichier)
+            {
+                string[] champs = ligneFichier.Split('\n');
+                var client = new Client();
+                client.Nom = champs[0];
+                client.Prenom = champs[1];
+                client.Adresse = champs[2];
+                string num = client.NuméroTéléphone.ToString();
+                num = champs[3];
+                client.Civilite = bool.Parse(champs[4]);
+                client.Pseudo = champs[5];
+                client.MotDePasse = champs[6];
 
-					clients.Add(client);
-				}
-			}
-			else
-			{
-				//Ecrire un contenu
-				var contenuFichier = new StringBuilder();
-				foreach (var client in clients)
-				{
-					contenuFichier.AppendLine(string.Join(" \n", client.Nom, client.Prenom, client.Adresse, client.NuméroTéléphone));
-				}
-				File.WriteAllText(CheminFichierCli, contenuFichier.ToString());
-			}
-			Console.ReadKey();
+                clients.Add(client);
+            }
 		}
 
-		private void EcrireFichierClient()
+		public void EcrireFichierClient()
 		{
 			var contenuFichier = new StringBuilder();
 			foreach (var client in this.clients)
@@ -165,7 +154,7 @@ namespace Data
 				this.participants.Add(participant);
 			}
 			this.EcrireFichierParticipants();
-			EcrireFichierParticipants();
+			//EcrireFichierParticipants();
 		}
 
 		public void SupprimerParticipants(Participant participant)
@@ -196,8 +185,7 @@ namespace Data
 		private void LireFichierParticipants()
 		{
 			this.participants = new List<Participant>();
-			if (File.Exists(CheminFichierPart))
-			{
+			
 				var lignes = File.ReadAllLines(CheminFichierPart);
 				foreach (var ligne in lignes)
 				{
@@ -213,7 +201,7 @@ namespace Data
 
 					participants.Add(participant);
 				}
-			}
+			
 		}
 
 
@@ -242,7 +230,7 @@ namespace Data
                 this.destinations.Add(destination);
             }
             this.EcrireFichierDestinations();
-            EcrireFichierDestinations();
+           // EcrireFichierDestinations();
         }
 
         public void SupprimerDestinations(Destination destination)
@@ -273,9 +261,7 @@ namespace Data
 		private void LireFichierDestinations()
 		{
 			this.destinations = new List<Destination>();
-			if (File.Exists(CheminFichierDest))
-			{
-				var lignes = File.ReadAllLines(CheminFichierDest);
+							var lignes = File.ReadAllLines(CheminFichierDest);
 				foreach (var ligne in lignes)
 				{
 					var champs = ligne.Split(SeparateurChamps);
@@ -291,50 +277,146 @@ namespace Data
 
 					destinations.Add(destination);
 				}
-			}
+			
 		}
 
+        // ========================= GESTION DES COMMERCIAUX =======================//
+        // ========================= === = ======== ========= ===== ===== ==========//
+
+        public IEnumerable<Commerciaux> GetListeCommerciaux()
+        {
+            InitialiserListeCommerciauxs();
+            return this.commerciaux;
+        }
+
+        private void InitialiserListeCommerciauxs()
+        {
+            if (this.commerciaux == null)
+            {
+                LireFichierCommerciaux();
+            }
+        }
+
+        public void EnregistrerCommerciaux(Commerciaux commercial)
+        {
+            if (!this.commerciaux.Contains(commercial))
+            {
+                this.commerciaux.Add(commercial);
+            }
+            this.EcrireFichierCommerciaux();
+            //EcrireFichierCommerciaux();
+        }
+
+        private void LireFichierCommerciaux()
+        {
+            this.commerciaux = new List<Commerciaux>();
+            
+                var lignes = File.ReadAllLines(CheminFichierComm);
+                foreach (var ligne in lignes)
+                {
+                    var champs = ligne.Split(SeparateurChamps);
+
+                    var commercial = new Commerciaux();
+                    commercial.Nom = champs[0];
+                    commercial.Prenom = champs[1];
+                    commercial.Pseudo = champs[2];
+                    commercial.MotDePasse = champs[3];
+                    
+
+                    //client.Civilite = champs[4]);  Pseudo ? Mot de passe ?
+
+                    commerciaux.Add(commercial);
+                }
+           
+        }
+
+        private void EcrireFichierCommerciaux()
+        {
+            var contenuFichier = new StringBuilder();
+            foreach (var commercial in this.commerciaux)
+            {
+                contenuFichier.AppendLine(string.Join(
+                                            SeparateurChamps.ToString(),
+                                            commercial.Pseudo,
+                                            commercial.Nom,
+                                            commercial.Prenom,
+                                            commercial.MotDePasse));
 
 
+                File.WriteAllText(CheminFichierComm, contenuFichier.ToString());
+            }
+        }
 
 
+        // ========================= GESTION DES VOYAGES =======================//
+        // ========================= === = ======== ========= ===== ===== ==========//
+
+        public IEnumerable<Commerciaux> GetListeVoyages()
+        {
+            InitialiserListeCommerciauxs();
+            return this.commerciaux;
+        }
+
+        private void InitialiserListeVoyages()
+        {
+            if (this.voyages == null)
+            {
+                LireFichierVoyages();
+            }
+        }
+
+        public void EnregistrerVoyages(Voyage voyage)
+        {
+            if (!this.voyages.Contains(voyage))
+            {
+                this.voyages.Add(voyage);
+            }
+            this.EcrireFichierVoyages();
+            //EcrireFichierCommerciaux();
+        }
+
+        private void LireFichierVoyages()
+        {
+            this.voyages = new List<Voyage>();
+            
+                var lignes = File.ReadAllLines(CheminFichierVoya);
+                foreach (var ligne in lignes)
+                {
+                    var champs = ligne.Split(SeparateurChamps);
+
+                    var voyage = new Voyage();
+                    voyage.DateDeDepart = DateTime.Parse(champs[0]);
+                    voyage.DateDeFin = DateTime.Parse(champs[1]);
+                    voyage.PrixPersonne = double.Parse(champs[2]);
+                    voyage.NombresParticipantsMax = int.Parse(champs[3]);
+                    voyage.Agence = champs[4];
+                   // voyage.Destination = champs[5];
+                    voyages.Add(voyage);
+                }
+           
+        }
+
+        private void EcrireFichierVoyages()
+        {
+            var contenuFichier = new StringBuilder();
+            foreach (var voyage in this.voyages)
+            {
+                contenuFichier.AppendLine(string.Join(
+                                            SeparateurChamps.ToString(),
+                                            voyage.DateDeDepart,
+                                            voyage.DateDeFin,
+                                            voyage.PrixPersonne,
+                                            voyage.NombresParticipantsMax,
+                                            voyage.Agence));
+                File.WriteAllText(CheminFichierVoya, contenuFichier.ToString());
+            }
+        }
 
 
+        // ========================= GESTION DE CONNEXION =======================//
+        // ========================= === = ======== ========= ===== ===== ==========//
 
-		// A RAJOUTER AUSSI POUR DESTINATIONS VOYAGE
-
-		public void SelectionnerVoyage(Voyage voyage)
-		{
-			if (!this.voyages.Contains(voyage))
-			{
-				this.voyages.Add(voyage);
-			}
-			this.EcrireFichierVoyage();
-			EcrireFichierVoyage();
-		}
-
-
-
-		private void EcrireFichierVoyage()
-		{
-			var contenuFichier = new StringBuilder();
-			foreach (var voyage in this.voyages)
-			{
-				contenuFichier.AppendLine(string.Join(
-											SeparateurChamps.ToString(),
-											voyage.Destination,
-											voyage.DateDeDepart,
-											voyage.DateDeFin,
-											voyage.PrixPersonne,
-											voyage.NombresParticipantsMax));
-				// pseudo ??
-
-				File.WriteAllText(CheminFichierVoya, contenuFichier.ToString());
-			}
-		}
-
-
-		public bool Connexion(string pseudo, string mdp)
+        public bool Connexion(string pseudo, string mdp)
 		{
 			OutilsData outils = new OutilsData();
 			
@@ -355,12 +437,5 @@ namespace Data
 			return false;
 		}
 
-
-
-
-		public void CreerDossier()
-		{
-
-		}
 	}
 }
