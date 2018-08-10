@@ -64,14 +64,11 @@ namespace Data
 
 		public List<Client> GetListeClients()
 		{
-			//InitialiserListeClients();
 			return this.clients;
 		}
 
 		public void EnregistrerClient(Client client)
 		{
-			//InitialiserListeClients();
-
 			if (!this.clients.Contains(client))
 			{
 				this.clients.Add(client);
@@ -81,18 +78,14 @@ namespace Data
 
 		public void SupprimerClient(Client client)
 		{
-			InitialiserListeClients();
 			this.clients.Remove(client);
-			this.EcrireFichierClient();
+            this.EcrireFichierClient();
 		}
 
 		void LireFichierClients()
 		{
-			// Lire un fichier
-			//var cheminFichier = @"...\Clients.txt";
-			
-				IEnumerable<string> lignesFichier = File.ReadLines(CheminFichierCli);
-            //var contactsDansFichier = new List<Contact>();
+            IEnumerable<string> lignesFichier = File.ReadLines(CheminFichierCli);
+            
             foreach (var ligneFichier in lignesFichier)
             {
                 string[] champs = ligneFichier.Split(';');
@@ -126,35 +119,12 @@ namespace Data
                                             client.Pseudo,
                                             client.MotDePasse
 											));
-                // pseudo ??
-
-               //File.Create(CheminFichierCli);
+               
                 File.WriteAllText(CheminFichierCli, contenuFichier.ToString());
 			}
 		}
 
 
-		//public static void EcrireFichier(List<Client> clients)
-		//{
-		//    StreamWriter fileWriter = new StreamWriter(CheminFichierCli);
-		//    foreach (Client a in clients)
-		//    {
-
-		//        fileWriter.WriteLine($"Accompagnants:");
-		//        fileWriter.WriteLine("nom-" + a.Nom);
-		//        fileWriter.WriteLine("prenom-" + a.Prenom);
-		//        fileWriter.WriteLine("civilite-" + a.Adresse);
-		//        int num = a.NuméroTéléphone;
-		//        string numero = num.ToString();
-		//        fileWriter.WriteLine("tele-" + numero);
-		//        fileWriter.WriteLine("date-" + a.DateDeNaissance);
-		//        fileWriter.WriteLine("Id-" + a.Id);
-		//        fileWriter.WriteLine("****************");
-
-		//    }
-		//    fileWriter.Close();
-
-		//}
 
 
 		// ========================= GESTION DES PARTICIPANTS =======================//
@@ -175,7 +145,6 @@ namespace Data
 
 		public IEnumerable<Participant> GetListeParticipants()
 		{
-			//InitialiserListeParticipants();
 			return this.participants;
 		}
 
@@ -191,7 +160,6 @@ namespace Data
 
 		public void SupprimerParticipants(Participant participant)
 		{
-			//InitialiserListeParticipants();
 			this.participants.Remove(participant);
 			this.EcrireFichierParticipants();
 		}
@@ -255,7 +223,6 @@ namespace Data
 
         public IEnumerable<Destination> GetListeDestinations()
         {
-            //InitialiserListeDestinations();
             return this.destinations;
         }
 
@@ -266,12 +233,10 @@ namespace Data
                 this.destinations.Add(destination);
             }
             this.EcrireFichierDestinations();
-           // EcrireFichierDestinations();
         }
 
         public void SupprimerDestinations(Destination destination)
         {
-           // InitialiserListeDestinations();
             this.destinations.Remove(destination);
             this.EcrireFichierDestinations();
         }
@@ -318,7 +283,6 @@ namespace Data
 
         public IEnumerable<Commerciaux> GetListeCommerciaux()
         {
-            //InitialiserListeCommerciaux();
             return this.commerciaux;
         }
 
@@ -346,8 +310,6 @@ namespace Data
 
         private void LireFichierCommerciaux()
         {
-            //this.commerciaux = new List<Commerciaux>();
-            
                 var lignes = File.ReadAllLines(CheminFichierComm);
                 foreach (var ligne in lignes)
                 {
@@ -390,7 +352,6 @@ namespace Data
 
         public List<Voyage> GetListeVoyages()
         {
-            //InitialiserListeVoyages();
             return this.voyages;
         }
 
@@ -413,7 +374,6 @@ namespace Data
                 this.voyages.Add(voyage);
             }
             this.EcrireFichierVoyages();
-            //EcrireFichierCommerciaux();
         }
 
         private void LireFichierVoyages()
@@ -465,8 +425,6 @@ namespace Data
 
         public bool Connexion(string pseudo, string mdp)
 		{
-			//OutilsData outils = new OutilsData();
-			//InitialiserListeCommerciauxs();
 			Commerciaux George = new Commerciaux();
 			George.Pseudo = pseudo;
 			George.MotDePasse = mdp;

@@ -19,12 +19,10 @@ namespace Metier
             var leClient = new Client();
             Console.WriteLine(new string('-', Console.WindowWidth));
 
-           // OutilsData outils = new OutilsData();
-           // var listeClients = ;
+            // OutilsData outils = new OutilsData();
+            // var listeClients = ;
 
-            PosezQuestion("Mr ou Mme?", ConsoleColor.Green);
-            leClient.Civilite = Console.ReadLine();
-
+            leClient.Civilite= PosezQuestion("Mr ou Mme?", ConsoleColor.Green);        
             leClient.Nom = PosezQuestion("Entrer le Nom du Client", ConsoleColor.Green);
 
             leClient.Prenom = PosezQuestion("Entrer le Prénom du Client", ConsoleColor.Green);
@@ -46,7 +44,7 @@ namespace Metier
         public static void ListerClients(OutilsData outils)
         {
             //OutilsData outils = new OutilsData();
-
+            Console.Clear();
             AfficherClients(outils.GetListeClients());
         }
 
@@ -86,8 +84,36 @@ namespace Metier
 
         public static void SupprimerClients(OutilsData outils)
         {
-            Console.WriteLine("EN CONSTRUCTION .......");
-            Console.ReadKey();
+            Console.Clear();
+            Console.WriteLine("SUPPRIMER UN CONTACT\n");
+            int index;
+            
+            List<Client> maListe = outils.GetListeClients();
+            Console.WriteLine(new string('-', Console.WindowWidth));
+
+            AfficherClients(maListe);
+
+
+             Console.WriteLine("\nQuel client souhaitez-vous supprimer ?", ConsoleColor.Green);
+            var saisie = Console.ReadLine();
+            index = int.Parse(saisie);
+
+
+            if (index - 1 <= maListe.Count() - 1)
+            {
+                Client client = maListe.ElementAt(index - 1);
+                outils.SupprimerClient(client);
+                Console.WriteLine("\nLE CONTACT A ETE SUPPRIME\n");
+                Console.ReadKey();
+            }
+            else
+            {
+                Console.WriteLine("\nNUMERO DE CONTACT INVALIDE ...\n");
+                Console.ReadKey();
+                SupprimerClients(outils);
+            }
+
+
         }
 
 
