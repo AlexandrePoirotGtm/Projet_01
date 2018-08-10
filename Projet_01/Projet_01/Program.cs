@@ -33,19 +33,19 @@ namespace Application
                         MenuVoyages();
                         break;
                     case "3":
-                        OutilsApplication.CenterText("GESTION DES DOSSIERS");
                         MenuDossiers();
                         break;
                     case "Q":
                     case "q":
                         OutilsApplication.CenterText("QUITTER");
                         return;
-
+                    default:
+                        Console.WriteLine("Choix invalide, recommencez");
+                        Console.ReadKey();
+                        OutilsApplication.AffichageMenu();
+                        break;
                 }
             }
-
-           
-
         }
 
 
@@ -69,6 +69,7 @@ namespace Application
                         OutilsApplication.CenterText("SUPPRIMER UN CLIENT\n");
                         break;
                     case "Q":
+                    case "q":
                         OutilsApplication.CenterText("REVENIR AU MENU PRINCIPAL");
                         return;
 
@@ -104,7 +105,35 @@ namespace Application
 
         static void MenuDossiers()
         {
-            
+            bool continuer = true;
+            while (continuer)
+            {
+                var choix = OutilsApplication.AffichageMenuDossier();
+                switch (choix)
+                {
+                    case "1":
+                        OutilsApplication.CenterText("LISTE DES DOSSIERS\n");
+                        Console.ReadKey();
+                        break;
+                    case "2":
+                        OutilsApplication.CenterText("RECHERCHER UN DOSSIER\n");
+                        OutilsMetier.CreerClient();
+                        break;
+                    case "3":
+                        OutilsApplication.CenterText("CREER UN DOSSIER\n");
+                        OutilsMetier.CreerClient();
+                        break;
+                    case "4":
+                        OutilsApplication.CenterText("SUPPRIMER UN DOSSIER\n");
+                        OutilsMetier.CreerClient();
+                        break;
+                    case "Q":
+                    case "q":
+                        OutilsApplication.CenterText("REVENIR AU MENU PRINCIPAL");
+                        return;
+
+                }
+            }
         }
 
     }

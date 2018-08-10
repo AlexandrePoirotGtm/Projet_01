@@ -98,7 +98,7 @@ namespace Application
 			AffichezMessage("\n1- GESTION DES CLIENTS", ConsoleColor.Cyan);
 			AffichezMessage("\n2- GESTION DES VOYAGES", ConsoleColor.Cyan);
 			AffichezMessage("\n3- GESTION DES DOSSIER", ConsoleColor.Cyan);
-            AffichezMessage("\nQ- QUITTER L'APPLICATION", ConsoleColor.Cyan);
+            AffichezMessage("\nQ- QUITTER L'APPLICATION\n\n", ConsoleColor.Cyan);
             choix = Console.ReadLine();
             return choix;
 		}
@@ -111,7 +111,7 @@ namespace Application
             AffichezMessage("\n1-LISTE DES CLIENTS", ConsoleColor.Cyan);
             AffichezMessage("\n2-CREER UN NOUVEAU CLIENT", ConsoleColor.Cyan);
             AffichezMessage("\n3- SUPPRIMER UN CLIENT", ConsoleColor.Cyan);
-            AffichezMessage("\nQ- REVENIR AU MENU PRINCIPAL", ConsoleColor.Cyan);
+            AffichezMessage("\nQ- REVENIR AU MENU PRINCIPAL\n\n", ConsoleColor.Cyan);
             choix = Console.ReadLine();
             return choix;
         }
@@ -123,10 +123,26 @@ namespace Application
             AffichezMessage("\tGESTION DES VOYAGES\n", ConsoleColor.Gray);
             AffichezMessage("\n1-LISTE DES VOYAGES", ConsoleColor.Cyan);
             AffichezMessage("\n3- RECHERCHER UN VOYAGE", ConsoleColor.Cyan);
-            AffichezMessage("\nQ- REVENIR AU MENU PRINCIPAL", ConsoleColor.Cyan);
+            AffichezMessage("\nQ- REVENIR AU MENU PRINCIPAL\n\n", ConsoleColor.Cyan);
             choix = Console.ReadLine();
             return choix;
         }
+
+        public static string AffichageMenuDossier()
+        {
+            string choix;
+            Console.Clear();
+            AffichezMessage("\tGESTION DES DOSSIERS\n", ConsoleColor.Gray);
+            AffichezMessage("\n1-LISTE DES DOSSIERS", ConsoleColor.Cyan);
+            AffichezMessage("\n3- RECHERCHER UN DOSSIER", ConsoleColor.Cyan);
+            AffichezMessage("\n3- CREER UN DOSSIER", ConsoleColor.Cyan);
+            AffichezMessage("\n3- SUPPRIMER UN DOSSIER", ConsoleColor.Cyan);
+            AffichezMessage("\nQ- REVENIR AU MENU PRINCIPAL\n\n", ConsoleColor.Cyan);
+            choix = Console.ReadLine();
+            return choix;
+        }
+
+
         public static void CenterText(string text)
 		{
 			int winWidth = (Console.WindowWidth / 2 - 15);
