@@ -9,10 +9,26 @@ namespace Metier
 {
 	public static class OutilsMetier
 	{
-        //public void CreerClient(Client client)
-        //{
-        //    this.donnees.Enregistrer(Client client);
-        //}
+        public static void CreerClient()
+       {
+            OutilsApplication.AffichezMessage("\n1- Créer un client", ConsoleColor.Cyan);
+        }
+
+        public static void ListerClients()
+        {
+
+        }
+
+        public static void CreerDossier()
+        {
+
+        }
+
+        public static void SelectionnerVoyage()
+        {
+
+        }
+
 
     }
 }

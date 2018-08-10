@@ -15,11 +15,15 @@ namespace Application
         static List<Client> clients = new List<Client>();
         static void Main(string[] args)
 		{
-			Console.WriteLine("Hello World!!!");
-			Console.WriteLine("Hello GTM!!!");
+			//Console.WriteLine("Hello World!!!");
+			//Console.WriteLine("Hello GTM!!!");
             Client cli = new Client();
+
             OutilsApplication.Loggin(cli);
             OutilsApplication.AffichageMenu();
+            Console.ReadKey();
+
+           
 
             //OutilsData.LectureFichier();
 
