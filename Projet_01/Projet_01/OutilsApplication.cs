@@ -116,6 +116,17 @@ namespace Application
             return choix;
         }
 
+        public static string AffichageMenuVoyage()
+        {
+            string choix;
+            Console.Clear();
+            AffichezMessage("\tGESTION DES VOYAGES\n", ConsoleColor.Gray);
+            AffichezMessage("\n1-LISTE DES VOYAGES", ConsoleColor.Cyan);
+            AffichezMessage("\n3- RECHERCHER UN VOYAGE", ConsoleColor.Cyan);
+            AffichezMessage("\nQ- REVENIR AU MENU PRINCIPAL", ConsoleColor.Cyan);
+            choix = Console.ReadLine();
+            return choix;
+        }
         public static void CenterText(string text)
 		{
 			int winWidth = (Console.WindowWidth / 2 - 15);
