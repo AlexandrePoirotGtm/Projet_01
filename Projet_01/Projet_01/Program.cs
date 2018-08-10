@@ -38,7 +38,7 @@ namespace Application
                     case "Q":
                     case "q":
                         OutilsApplication.CenterText("QUITTER");
-                        outils.Testament();
+						outils.Testament();
                         return;
                     default:
                         Console.WriteLine("Choix invalide, recommencez");
@@ -47,6 +47,7 @@ namespace Application
                         break;
                 }
             }
+			
         }
 
 
