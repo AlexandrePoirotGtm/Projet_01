@@ -95,7 +95,7 @@ namespace Application
             string choix;
             Console.Clear();
             Console.WriteLine();
-            CenterText("\tMENU PRINCIPAL\n", ConsoleColor.Gray);
+            CenterText("\tMENU PRINCIPAL\n", ConsoleColor.Cyan);
             Console.WriteLine();
             Console.WriteLine(new string('=', Console.WindowWidth));
             CenterText("1- GESTION DES CLIENTS\n", ConsoleColor.Cyan);
@@ -111,7 +111,7 @@ namespace Application
             string choix;
             Console.Clear();
             Console.WriteLine();
-            CenterText("\tGESTION DES CLIENTS\n", ConsoleColor.Gray);
+            CenterText("\tGESTION DES CLIENTS\n", ConsoleColor.Cyan);
             Console.WriteLine();
             Console.WriteLine(new string('=', Console.WindowWidth));
             CenterText("1- LISTE DES CLIENTS\n", ConsoleColor.Cyan);
@@ -127,7 +127,7 @@ namespace Application
             string choix;
             Console.Clear();
             Console.WriteLine();
-            CenterText("\tGESTION DES VOYAGES\n", ConsoleColor.Gray);
+            CenterText("\tGESTION DES VOYAGES\n", ConsoleColor.Cyan);
             Console.WriteLine();
             Console.WriteLine(new string('=', Console.WindowWidth));
             CenterText("1- LISTE DES VOYAGES\n", ConsoleColor.Cyan);
@@ -143,7 +143,7 @@ namespace Application
             string choix;
             Console.Clear();
             Console.WriteLine();
-            CenterText("\tGESTION DES DOSSIERS\n", ConsoleColor.Gray);
+            CenterText("\tGESTION DES DOSSIERS\n", ConsoleColor.Cyan);
             Console.WriteLine();
             Console.WriteLine(new string('=', Console.WindowWidth));
             CenterText("1- LISTE DES DOSSIERS\n", ConsoleColor.Cyan);

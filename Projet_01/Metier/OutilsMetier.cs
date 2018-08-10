@@ -15,13 +15,11 @@ namespace Metier
         public static void CreerClient(OutilsData outils)
         {
             Console.Clear();
-            Console.WriteLine("AJOUTER UN CONTACT\n");
+            Console.WriteLine();
+            CenterText("\tAJOUTER UN NOUVEAU CLIENT\n");
+            Console.WriteLine(new string('=', Console.WindowWidth));
+
             var leClient = new Client();
-            Console.WriteLine(new string('-', Console.WindowWidth));
-
-            // OutilsData outils = new OutilsData();
-            // var listeClients = ;
-
             leClient.Civilite= PosezQuestion("Mr ou Mme?", ConsoleColor.Green);        
             leClient.Nom = PosezQuestion("Entrer le Nom du Client", ConsoleColor.Green);
 
@@ -34,9 +32,6 @@ namespace Metier
            outils.EnregistrerClient(leClient);
 
             Console.WriteLine("Le nouveau Client a bien été ajouté\n");
-
-            Console.ReadKey();
-            
             return;
         }
 
@@ -44,8 +39,9 @@ namespace Metier
         public static void ListerClients(OutilsData outils)
         {
             Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine();
-            CenterText("LISTE DES CLIENTS");
+            CenterText("\tLISTE DES CLIENTS");
             Console.WriteLine();
             Console.WriteLine(new string('=', Console.WindowWidth));
             Console.WriteLine();
@@ -64,7 +60,7 @@ namespace Metier
             Console.Write("{0,-10} ", "MOT DE PASSE");
 
             Console.WriteLine();
-            Console.WriteLine(new string('-', Console.WindowWidth));
+            Console.WriteLine(new string('=', Console.WindowWidth));
 
             int i = 1;
 
@@ -81,15 +77,14 @@ namespace Metier
                 i++;
             }
 
-            Console.ForegroundColor = ConsoleColor.Blue;
-            //Console.ReadKey();
+            //Console.ForegroundColor = ConsoleColor.Blue;
         }
 
 
         public static void SupprimerClients(OutilsData outils)
         {
             Console.Clear();
-            Console.WriteLine("SUPPRIMER UN CONTACT\n");
+            CenterText("SUPPRIMER UN CONTACT\n");
             int index;
             
             List<Client> maListe = outils.GetListeClients();
@@ -108,7 +103,6 @@ namespace Metier
                 Client client = maListe.ElementAt(index - 1);
                 outils.SupprimerClient(client);
                 Console.WriteLine("\nLE CONTACT A ETE SUPPRIME\n");
-                Console.ReadKey();
             }
             else
             {
@@ -135,7 +129,7 @@ namespace Metier
             Console.Write("{0,-10} |", "AGENCE");
             
             Console.WriteLine();
-            Console.WriteLine(new string('-', Console.WindowWidth));
+            Console.WriteLine(new string('=', Console.WindowWidth));
 
             int i = 1;
 
@@ -151,14 +145,14 @@ namespace Metier
                 i++;
             }
 
-            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.ForegroundColor = ConsoleColor.Cyan;
         }
 
         public static void ListerVoyages(OutilsData outils)
         {
             Console.Clear();
             Console.WriteLine();
-            CenterText("LISTE DES VOYAGES");
+            CenterText("\tLISTE DES VOYAGES");
             Console.WriteLine();
             Console.WriteLine(new string('=', Console.WindowWidth));
             AfficherVoyages(outils.GetListeVoyages());
@@ -194,7 +188,7 @@ namespace Metier
 
         private static void AfficherDossier()
         {
-            Console.Write("{0,-20} | ", "NOM CLIENT");
+            Console.Write("{0,-20} |", "NOM CLIENT");
             Console.Write("{0,-10} |", "NOM VOYAGE");
             Console.Write("{0,-10} |", "ETAT");
             Console.Write("{0,-10} |", "NB PARTICIPANTS");
@@ -209,7 +203,7 @@ namespace Metier
         {
             Console.Clear();
             Console.WriteLine();
-            CenterText("LISTE DES DOSSIERS");
+            CenterText("\tLISTE DES DOSSIERS");
             Console.WriteLine();
             Console.WriteLine(new string('=', Console.WindowWidth));
             AfficherDossier();
