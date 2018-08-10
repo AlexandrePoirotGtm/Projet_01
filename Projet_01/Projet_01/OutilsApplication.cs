@@ -57,7 +57,7 @@ namespace Application
 		{
 			string pseudo;
 			string motDePasse;
-			
+            Console.WriteLine();
 			CenterText("Bienvenue chez Bo'Voyage\n", ConsoleColor.Green);
 			CenterText("Veuillez vous Identifier\n", ConsoleColor.Green);
 			pseudo = PosezQuestionObligatoire("Pseudo : ", ConsoleColor.Green);
@@ -96,7 +96,6 @@ namespace Application
             Console.Clear();
             Console.WriteLine();
             CenterText("\tMENU PRINCIPAL\n", ConsoleColor.Cyan);
-            Console.WriteLine();
             Console.WriteLine(new string('=', Console.WindowWidth));
             CenterText("1- GESTION DES CLIENTS\n", ConsoleColor.Cyan);
 			CenterText("2- GESTION DES VOYAGES\n", ConsoleColor.Cyan);
@@ -112,7 +111,6 @@ namespace Application
             Console.Clear();
             Console.WriteLine();
             CenterText("\tGESTION DES CLIENTS\n", ConsoleColor.Cyan);
-            Console.WriteLine();
             Console.WriteLine(new string('=', Console.WindowWidth));
             CenterText("1- LISTE DES CLIENTS\n", ConsoleColor.Cyan);
             CenterText("2- CREER UN NOUVEAU CLIENT\n", ConsoleColor.Cyan);
@@ -128,7 +126,6 @@ namespace Application
             Console.Clear();
             Console.WriteLine();
             CenterText("\tGESTION DES VOYAGES\n", ConsoleColor.Cyan);
-            Console.WriteLine();
             Console.WriteLine(new string('=', Console.WindowWidth));
             CenterText("1- LISTE DES VOYAGES\n", ConsoleColor.Cyan);
             CenterText("2- RECHERCHER UN VOYAGE\n", ConsoleColor.Cyan);
@@ -144,7 +141,6 @@ namespace Application
             Console.Clear();
             Console.WriteLine();
             CenterText("\tGESTION DES DOSSIERS\n", ConsoleColor.Cyan);
-            Console.WriteLine();
             Console.WriteLine(new string('=', Console.WindowWidth));
             CenterText("1- LISTE DES DOSSIERS\n", ConsoleColor.Cyan);
             CenterText("2- RECHERCHER UN DOSSIER\n", ConsoleColor.Cyan);

@@ -15,6 +15,7 @@ namespace Metier
         public static void CreerClient(OutilsData outils)
         {
             Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine();
             CenterText("\tAJOUTER UN NOUVEAU CLIENT\n");
             Console.WriteLine(new string('=', Console.WindowWidth));
@@ -41,15 +42,15 @@ namespace Metier
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine();
-            CenterText("\tLISTE DES CLIENTS");
-            Console.WriteLine();
+            CenterText("\tLISTE DES CLIENTS\n");
+
             Console.WriteLine(new string('=', Console.WindowWidth));
-            Console.WriteLine();
             AfficherClients(outils.GetListeClients());
         }
 
         private static void AfficherClients(List<Client> listeClients)
         {
+            
             Console.Write("{0,-3} | ", "ID");
             Console.Write("{0,-5} |", "M/Mme");
             Console.Write("{0,-10} |", "NOM");
@@ -77,27 +78,26 @@ namespace Metier
                 i++;
             }
 
-            //Console.ForegroundColor = ConsoleColor.Blue;
+            Console.ForegroundColor = ConsoleColor.Cyan;
         }
 
 
         public static void SupprimerClients(OutilsData outils)
         {
             Console.Clear();
-            CenterText("SUPPRIMER UN CONTACT\n");
-            int index;
-            
-            List<Client> maListe = outils.GetListeClients();
-            Console.WriteLine(new string('-', Console.WindowWidth));
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine();
+            CenterText("\nSUPPRIMER UN CLIENT\n");
+            Console.WriteLine(new string('=', Console.WindowWidth));
 
+            int index;
+            List<Client> maListe = outils.GetListeClients();
             AfficherClients(maListe);
 
-
              Console.WriteLine("\nQuel client souhaitez-vous supprimer ?", ConsoleColor.Green);
+
             var saisie = Console.ReadLine();
             index = int.Parse(saisie);
-
-
             if (index - 1 <= maListe.Count() - 1)
             {
                 Client client = maListe.ElementAt(index - 1);
@@ -110,7 +110,6 @@ namespace Metier
                 Console.ReadKey();
                 SupprimerClients(outils);
             }
-
 
         }
 
@@ -151,6 +150,7 @@ namespace Metier
         public static void ListerVoyages(OutilsData outils)
         {
             Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine();
             CenterText("\tLISTE DES VOYAGES");
             Console.WriteLine();
@@ -188,6 +188,7 @@ namespace Metier
 
         private static void AfficherDossier()
         {
+            Console.ForegroundColor = ConsoleColor.Cyan;
             Console.Write("{0,-20} |", "NOM CLIENT");
             Console.Write("{0,-10} |", "NOM VOYAGE");
             Console.Write("{0,-10} |", "ETAT");
@@ -197,14 +198,15 @@ namespace Metier
 
             Console.WriteLine();
             Console.WriteLine(new string('=', Console.WindowWidth));
+            Console.ForegroundColor = ConsoleColor.Cyan;
         }
 
         public static void ListerDossiers(OutilsData outils)
         {
             Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine();
-            CenterText("\tLISTE DES DOSSIERS");
-            Console.WriteLine();
+            CenterText("\tLISTE DES DOSSIERS\n");
             Console.WriteLine(new string('=', Console.WindowWidth));
             AfficherDossier();
         }
