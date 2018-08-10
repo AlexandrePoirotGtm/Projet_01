@@ -291,9 +291,14 @@ namespace Data
 
         private void InitialiserListeCommerciauxs()
         {
-            if (this.commerciaux == null)
+            if (File.Exists(CheminFichierComm))
             {
                 LireFichierCommerciaux();
+            }
+            else
+            {
+                commerciaux = new List<Commerciaux>();
+                File.Create(CheminFichierComm);
             }
         }
 
