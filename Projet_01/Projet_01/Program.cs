@@ -30,7 +30,6 @@ namespace Application
                         MenuClients();                     
                         break;
                     case "2":
-                        OutilsApplication.CenterText("GESTION DES VOYAGES");
                         MenuVoyages();
                         break;
                     case "3":
@@ -38,6 +37,7 @@ namespace Application
                         MenuDossiers();
                         break;
                     case "Q":
+                    case "q":
                         OutilsApplication.CenterText("QUITTER");
                         return;
 
@@ -79,7 +79,27 @@ namespace Application
 
         static void MenuVoyages()
         {
+            bool continuer = true;
+            while (continuer)
+            {
+                var choix = OutilsApplication.AffichageMenuVoyage();
+                switch (choix)
+                {
+                    case "1":
+                        OutilsApplication.CenterText("LISTE DES VOYAGES\n");
+                        Console.ReadKey();
+                        break;
+                    case "2":
+                        OutilsApplication.CenterText("RECHERCHER UN VOYAGE\n");
+                        OutilsMetier.CreerClient();
+                        break;
+                    case "Q":
+                    case "q":
+                        OutilsApplication.CenterText("REVENIR AU MENU PRINCIPAL");
+                        return;
 
+                }
+            }
         }
 
         static void MenuDossiers()
