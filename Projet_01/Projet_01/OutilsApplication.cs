@@ -129,6 +129,7 @@ namespace Application
             Console.WriteLine(new string('=', Console.WindowWidth));
             CenterText("1- LISTE DES VOYAGES\n", ConsoleColor.Cyan);
             CenterText("2- RECHERCHER UN VOYAGE\n", ConsoleColor.Cyan);
+            CenterText("3- ENREGISTRER UN NOUVEAU VOYAGE\n", ConsoleColor.Cyan);
             CenterText("Q- REVENIR AU MENU PRINCIPAL\n\n", ConsoleColor.Cyan);
             choix = Console.ReadLine();
             return choix;

@@ -22,6 +22,7 @@ namespace Data
             NombresParticipantsMax = 0;
             PrixPersonne = 0;
             Agence = "Agence";
+            //Destination = Destination.Nom;
         }
 
 		public Destination RecupDest(string liste, char separateurChamps)

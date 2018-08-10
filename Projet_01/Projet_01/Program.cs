@@ -96,6 +96,10 @@ namespace Application
                         OutilsMetier.RechercherVoyage();
                         Console.ReadKey();
                         break;
+                    case "3":
+                        OutilsMetier.CreerNouveauVoyage();
+                        Console.ReadKey();
+                        break;
                     case "Q":
                     case "q":
                         OutilsApplication.CenterText("REVENIR AU MENU PRINCIPAL");

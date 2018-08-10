@@ -160,12 +160,22 @@ namespace Metier
             AfficherVoyages(outils.GetListeVoyages());
         }
 
+
+        public static void CreerNouveauVoyage()
+        {
+            Console.Clear();
+            Console.WriteLine("EN CONSTRUCTION .......");
+            Console.ReadKey();
+        }
+
+
         public static void RechercherVoyage()
         {
             Console.Clear();
             Console.WriteLine("EN CONSTRUCTION .......");
             Console.ReadKey();
         }
+
 
         public static void SelectionnerVoyage()
         {
