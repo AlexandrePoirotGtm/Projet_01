@@ -78,11 +78,13 @@ namespace Application
         public static void AffichageMenu()
         {
             Console.Clear();
-            AffichezMessage("\tMENU\n",ConsoleColor.Gray);
-            AffichezMessage("\n1- Créer un client",ConsoleColor.Cyan);
-            AffichezMessage("\n2- Créér un voyage",ConsoleColor.Cyan);
-            AffichezMessage("\n3- Gérer un dossier",ConsoleColor.Cyan);
+            AffichezMessage("\tMENU PRINCIPAL\n",ConsoleColor.Gray);
+            AffichezMessage("\n1- GESTION DES CLIENTS",ConsoleColor.Cyan);
+            AffichezMessage("\n2- GESTION DES VOYAGES",ConsoleColor.Cyan);
+            AffichezMessage("\n3- GESTION DES DOSSIERS",ConsoleColor.Cyan);
         }
+
+
 
 		public static void CenterText(string text)
 		{

@@ -23,6 +23,7 @@ namespace Application
             OutilsApplication.Loggin();
             OutilsApplication.AffichageMenu();
             Console.ReadKey();
+            OutilsMetier.ListerClients();
 
 
             

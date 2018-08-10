@@ -16,6 +16,8 @@ namespace Metier
 
         public static void ListerClients()
         {
+            OutilsData outils = new OutilsData();
+            outils.GetListeClients();
 
         }
 
