@@ -36,6 +36,15 @@ namespace Data
             InitialiserListeVoyages();
 		}
 
+		 public void Testament()
+		{
+			EcrireFichierClient();
+			EcrireFichierCommerciaux();
+			EcrireFichierDestinations();
+			EcrireFichierParticipants();
+			EcrireFichierVoyages();
+		}
+
 		// =========================== GESTION DES CLIENTS=============================//
 		// ===================== Déclaration d'un nouveau client ======================//
 		//=============== A METTRE PEUT-ETRE PLUTOT DANS LA COUCHE METIER ============//
@@ -362,9 +371,9 @@ namespace Data
             {
                 contenuFichier.AppendLine(string.Join(
                                             SeparateurChamps.ToString(),
-                                            commercial.Pseudo,
                                             commercial.Nom,
                                             commercial.Prenom,
+                                            commercial.Pseudo,
                                             commercial.MotDePasse));
 
 
@@ -452,6 +461,9 @@ namespace Data
 			Commerciaux George = new Commerciaux();
 			George.Pseudo = pseudo;
 			George.MotDePasse = mdp;
+			George.Nom = "Doggo";
+			George.Prenom = "George";
+			
 			commerciaux.Add(George);
 
 			foreach (Commerciaux com in commerciaux)
