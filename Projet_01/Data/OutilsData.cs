@@ -351,10 +351,10 @@ namespace Data
         // ========================= GESTION DES VOYAGES =======================//
         // ========================= === = ======== ========= ===== ===== ==========//
 
-        public IEnumerable<Commerciaux> GetListeVoyages()
+        public IEnumerable<Voyage> GetListeVoyages()
         {
-            InitialiserListeCommerciauxs();
-            return this.commerciaux;
+            InitialiserListeVoyages();
+            return this.voyages;
         }
 
         private void InitialiserListeVoyages()
