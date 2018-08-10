@@ -20,12 +20,16 @@ namespace Data
 		const char SeparateurChamps = ';';
 
 
-		private List<Destination> destinations { get; set; }
-		private List<Voyage> voyages { get; set; }
-		private List<Dossier> dossiers { get; set; }
-		private List<Client> clients { get; set; }
-		private List<Participant> participants { get; set; }
-		private List<Commerciaux> commerciaux = new List<Commerciaux>();//{ get; set; }
+		private List<Destination> destinations = new List<Destination>();
+		private List<Voyage> voyages = new List<Voyage>();
+		private List<Dossier> dossiers = new List<Dossier>();
+		private List<Client> clients = new List<Client>();
+		private List<Participant> participants = new List<Participant>();
+		private List<Commerciaux> commerciaux = new List<Commerciaux>();
+
+		public OutilsData()
+		{		
+		}
 
 		// =========================== GESTION DES CLIENTS=============================//
 		// ===================== Déclaration d'un nouveau client ======================//
@@ -297,7 +301,6 @@ namespace Data
             }
             else
             {
-                commerciaux = new List<Commerciaux>();
                 File.Create(CheminFichierComm);
             }
         }
@@ -314,7 +317,7 @@ namespace Data
 
         private void LireFichierCommerciaux()
         {
-            this.commerciaux = new List<Commerciaux>();
+            //this.commerciaux = new List<Commerciaux>();
             
                 var lignes = File.ReadAllLines(CheminFichierComm);
                 foreach (var ligne in lignes)
@@ -423,8 +426,8 @@ namespace Data
 
         public bool Connexion(string pseudo, string mdp)
 		{
-			OutilsData outils = new OutilsData();
-			outils.InitialiserListeCommerciauxs();
+			//OutilsData outils = new OutilsData();
+			//InitialiserListeCommerciauxs();
 			Commerciaux George = new Commerciaux();
 			George.Pseudo = pseudo;
 			George.MotDePasse = mdp;

@@ -53,12 +53,11 @@ namespace Application
 			Console.ResetColor();
 		}
 
-		public static bool Loggin()
+		public static bool Loggin(OutilsData outilsD)
 		{
 			string pseudo;
 			string motDePasse;
-			OutilsData outilsD = new OutilsData();
-
+			
 			CenterText("Bienvenue chez Bo'Voyage\n", ConsoleColor.Green);
 			CenterText("Veuillez vous Identifier\n", ConsoleColor.Green);
 			pseudo = PosezQuestionObligatoire("Votre pseudo : ", ConsoleColor.Green);
