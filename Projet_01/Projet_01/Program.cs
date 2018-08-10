@@ -18,7 +18,7 @@ namespace Application
 			//Console.WriteLine("Hello GTM!!!");
             Client cli = new Client();
 			OutilsData outils = new OutilsData();
-            OutilsApplication.Loggin();
+            OutilsApplication.Loggin(outils);
 
             bool continuer = true;
             while (continuer)
