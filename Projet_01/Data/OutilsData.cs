@@ -62,7 +62,7 @@ namespace Data
             }
         }
 
-		public IEnumerable<Client> GetListeClients()
+		public List<Client> GetListeClients()
 		{
 			InitialiserListeClients();
 			return this.clients;

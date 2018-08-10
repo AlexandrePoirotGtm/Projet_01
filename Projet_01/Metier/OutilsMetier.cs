@@ -13,23 +13,41 @@ namespace Metier
         // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
         // ===============================  METHODES DE MANIPULATION DES CLIENTS ++++++++++++++++++++++++++++++++++//
         public static void CreerClient()
-       {
-            //OutilsApplication.AffichezMessage("\n1- Créer un client", ConsoleColor.Cyan);
+        {
+            Console.Clear();
+            Console.WriteLine("AJOUTER UN CONTACT\n");
+            var leClient = new Client();
+            Console.WriteLine(new string('-', Console.WindowWidth));
+
+            OutilsData outils = new OutilsData();
+            var listeClients = outils.GetListeClients();
+            PosezQuestion("Entrer le Nom du Client", ConsoleColor.Green);
+            leClient.Nom = Console.ReadLine();
+            PosezQuestion("Entrer le Prénom du Client", ConsoleColor.Green);
+            leClient.Prenom = Console.ReadLine();
+                listeClients.Add(leClient);
+            
+
+            Console.WriteLine("Le nouveau Client a bien été ajouté\n");
+            Console.ReadKey();
+           // OutilsData.EnregistrerClient(leClient);
+
         }
+
+
+
 
         public static void ListerClients()
         {
             OutilsData outils = new OutilsData();
             var listeClients = outils.GetListeClients();
             AfficherClients(listeClients);
-           
-
         }
 
         private static void AfficherClients(IEnumerable<Client> listeClients)
         {
             Console.Write("{0,-3} | ", "ID");
-            Console.Write("{0,-10} |", "M/Mme");
+            Console.Write("{0,-5} |", "M/Mme");
             Console.Write("{0,-10} |", "NOM");
             Console.Write("{0,-10} |", "PRENOM");
             Console.Write("{0,-20} |", "ADRESSE");
@@ -59,17 +77,57 @@ namespace Metier
             //Console.ReadKey();
         }
 
+
+
+
         public static void SupprimerClients()
         {
 
         }
 
+
+
         // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
         // ===============================  METHODES DE MANIPULATION DES VOYAGES ++++++++++++++++++++++++++++++++++//
 
+        private static void AfficherVoyages(IEnumerable<Voyage> listeVoyages)
+        {
+            Console.Write("{0,-20} | ", "DESTINATION");
+            Console.Write("{0,-10} |", "DATE DEBUT");
+            Console.Write("{0,-10} |", "DATE FIN");
+            Console.Write("{0,-10} |", "NB MAX Pers.");
+            Console.Write("{0,-10} |", "PRIX PERSONNE");
+            Console.Write("{0,-10} |", "AGENCE");
+            
+            Console.WriteLine();
+            Console.WriteLine(new string('-', Console.WindowWidth));
+
+            int i = 1;
+
+            foreach (var voyage in listeVoyages)
+            {
+                Console.Write("{0,-3} ", i);
+                Console.Write("{0,-10} ", voyage.Destination);
+                Console.Write("{0,-10} ", voyage.DateDeDepart);
+                Console.Write("{0,-20} ", voyage.DateDeFin);
+                Console.Write("{0,-20} ", voyage.NombresParticipantsMax);
+                Console.Write("{0,-20} ", voyage.PrixPersonne);
+                Console.Write("{0,-20} ", voyage.Agence);
+                
+                i++;
+            }
+
+            Console.ForegroundColor = ConsoleColor.Blue;
+            //Console.ReadKey();
+        }
+
+
+
         public static void ListerVoyages()
         {
-
+            OutilsData outils = new OutilsData();
+            var listeVoyages = outils.GetListeVoyages();
+            AfficherVoyages(listeVoyages);
         }
 
         public static void RechercherVoyage()
@@ -92,9 +150,15 @@ namespace Metier
 
 
 
-        
 
 
+        public static string PosezQuestion(string question, ConsoleColor couleur)
+        {
+            Console.ForegroundColor = couleur;
+            Console.WriteLine(question);
+            Console.ResetColor();
+            return (Console.ReadLine());
+        }
 
     }
 }
