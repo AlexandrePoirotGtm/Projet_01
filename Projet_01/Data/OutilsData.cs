@@ -16,207 +16,204 @@ namespace Data
 		const string CheminFichierCli = @"...\Clients.txt";
 		const string CheminFichierPart = @"...\Participants.txt";
 		const string CheminFichierComm = @"...\Commerciaux.txt";
-                
-        const char SeparateurChamps = '\n';
+
+		const char SeparateurChamps = '\n';
 
 
-        private List<Destination> destinations;
-		private List<Voyage> voyages;
-		private List<Dossier> dossiers;
-		private List<Client> clients;
-		private List<Participant> participants;
-		private List<Commerciaux> commerciaux;
-
-
-
-        // =========================== GESTION DES CLIENTS=============================//
-        // ===================== Déclaration d'un nouveau client ======================//
-        //=============== A METTRE PEUT-ETRE PLUTOT DANS LA COUCHE METIER ============//
-
-        private void InitialiserListeClients()
-        {
-            if (this.clients == null)
-            {
-                LireFichierClients();
-            }
-        }
-
-        public IEnumerable<Client> GetListeClients()
-        {
-            InitialiserListeClients();
-            return this.clients;
-        }
-
-        public void EnregistrerClient(Client client)
-        {
-            InitialiserListeClients();
-
-            if (!this.clients.Contains(client))
-            {
-                this.clients.Add(client);
-            }
-            this.EcrireFichierClient();
-        }
-
-        public void SupprimerClient(Client client)
-        {
-            InitialiserListeClients();
-            this.clients.Remove(client);
-            this.EcrireFichierClient();
-        }
-
-        void LireFichierClients()
-        {
-            // Lire un fichier
-            //var cheminFichier = @"...\Clients.txt";
-            if (File.Exists(CheminFichierCli))
-            {
-                IEnumerable<string> lignesFichier = File.ReadLines(CheminFichierCli);
-                //var contactsDansFichier = new List<Contact>();
-                foreach (var ligneFichier in lignesFichier)
-                {
-                    string[] champs = ligneFichier.Split('\n');
-                    var client = new Client();
-                    client.Nom = champs[0];
-                    client.Prenom = champs[1];
-                    client.Adresse = champs[2];
-                    string num = client.NuméroTéléphone.ToString();
-                    num = champs[3];
-                    //client.Civilite = champs[4]);  Pseudo ? Mot de passe ?
-
-                    clients.Add(client);
-                }
-            }
-            else
-            {
-                //Ecrire un contenu
-                var contenuFichier = new StringBuilder();
-                foreach (var client in clients)
-                {
-                    contenuFichier.AppendLine(string.Join(" \n", client.Nom, client.Prenom, client.Adresse, client.NuméroTéléphone));
-                }
-                File.WriteAllText(CheminFichierCli, contenuFichier.ToString());
-            }
-            Console.ReadKey();
-        }
-
-        private void EcrireFichierClient()
-        {
-            var contenuFichier = new StringBuilder();
-            foreach (var client in this.clients)
-            {
-                contenuFichier.AppendLine(string.Join(
-                                            SeparateurChamps.ToString(),
-                                            client.Nom,
-                                            client.Prenom,
-                                            client.Adresse,
-                                            client.NuméroTéléphone,
-                                            client.Civilite));
-                // pseudo ??
-
-                File.WriteAllText(CheminFichierCli, contenuFichier.ToString());
-            }
-        }
-
-
-        //public static void EcrireFichier(List<Client> clients)
-        //{
-        //    StreamWriter fileWriter = new StreamWriter(CheminFichierCli);
-        //    foreach (Client a in clients)
-        //    {
-
-        //        fileWriter.WriteLine($"Accompagnants:");
-        //        fileWriter.WriteLine("nom-" + a.Nom);
-        //        fileWriter.WriteLine("prenom-" + a.Prenom);
-        //        fileWriter.WriteLine("civilite-" + a.Adresse);
-        //        int num = a.NuméroTéléphone;
-        //        string numero = num.ToString();
-        //        fileWriter.WriteLine("tele-" + numero);
-        //        fileWriter.WriteLine("date-" + a.DateDeNaissance);
-        //        fileWriter.WriteLine("Id-" + a.Id);
-        //        fileWriter.WriteLine("****************");
-
-        //    }
-        //    fileWriter.Close();
-
-        //}
+		private List<Destination> destinations { get; set; }
+		private List<Voyage> voyages { get; set; }
+		private List<Dossier> dossiers { get; set; }
+		private List<Client> clients { get; set; }
+		private List<Participant> participants { get; set; }
+		private List<Commerciaux> commerciaux { get; set; }
 
 
 
+		// =========================== GESTION DES CLIENTS=============================//
+		// ===================== Déclaration d'un nouveau client ======================//
+		//=============== A METTRE PEUT-ETRE PLUTOT DANS LA COUCHE METIER ============//
+
+		private void InitialiserListeClients()
+		{
+			if (this.clients == null)
+			{
+				LireFichierClients();
+			}
+		}
+
+		public IEnumerable<Client> GetListeClients()
+		{
+			InitialiserListeClients();
+			return this.clients;
+		}
+
+		public void EnregistrerClient(Client client)
+		{
+			InitialiserListeClients();
+
+			if (!this.clients.Contains(client))
+			{
+				this.clients.Add(client);
+			}
+			this.EcrireFichierClient();
+		}
+
+		public void SupprimerClient(Client client)
+		{
+			InitialiserListeClients();
+			this.clients.Remove(client);
+			this.EcrireFichierClient();
+		}
+
+		void LireFichierClients()
+		{
+			// Lire un fichier
+			//var cheminFichier = @"...\Clients.txt";
+			if (File.Exists(CheminFichierCli))
+			{
+				IEnumerable<string> lignesFichier = File.ReadLines(CheminFichierCli);
+				//var contactsDansFichier = new List<Contact>();
+				foreach (var ligneFichier in lignesFichier)
+				{
+					string[] champs = ligneFichier.Split('\n');
+					var client = new Client();
+					client.Nom = champs[0];
+					client.Prenom = champs[1];
+					client.Adresse = champs[2];
+					string num = client.NuméroTéléphone.ToString();
+					num = champs[3];
+					//client.Civilite = champs[4]);  Pseudo ? Mot de passe ?
+
+					clients.Add(client);
+				}
+			}
+			else
+			{
+				//Ecrire un contenu
+				var contenuFichier = new StringBuilder();
+				foreach (var client in clients)
+				{
+					contenuFichier.AppendLine(string.Join(" \n", client.Nom, client.Prenom, client.Adresse, client.NuméroTéléphone));
+				}
+				File.WriteAllText(CheminFichierCli, contenuFichier.ToString());
+			}
+			Console.ReadKey();
+		}
+
+		private void EcrireFichierClient()
+		{
+			var contenuFichier = new StringBuilder();
+			foreach (var client in this.clients)
+			{
+				contenuFichier.AppendLine(string.Join(
+											SeparateurChamps.ToString(),
+											client.Nom,
+											client.Prenom,
+											client.Adresse,
+											client.NuméroTéléphone,
+											client.Civilite));
+				// pseudo ??
+
+				File.WriteAllText(CheminFichierCli, contenuFichier.ToString());
+			}
+		}
+
+
+		//public static void EcrireFichier(List<Client> clients)
+		//{
+		//    StreamWriter fileWriter = new StreamWriter(CheminFichierCli);
+		//    foreach (Client a in clients)
+		//    {
+
+		//        fileWriter.WriteLine($"Accompagnants:");
+		//        fileWriter.WriteLine("nom-" + a.Nom);
+		//        fileWriter.WriteLine("prenom-" + a.Prenom);
+		//        fileWriter.WriteLine("civilite-" + a.Adresse);
+		//        int num = a.NuméroTéléphone;
+		//        string numero = num.ToString();
+		//        fileWriter.WriteLine("tele-" + numero);
+		//        fileWriter.WriteLine("date-" + a.DateDeNaissance);
+		//        fileWriter.WriteLine("Id-" + a.Id);
+		//        fileWriter.WriteLine("****************");
+
+		//    }
+		//    fileWriter.Close();
+
+		//}
 
 
 
-            // ========================= GESTION DES PARTICIPANTS =======================//
-            // ==========  === = ======== ========= ===== ===== ==========//
-
-
-            private void InitialiserListeParticipants()
-        {
-            if (this.participants == null)
-            {
-                LireFichierParticipants();
-            }
-        }
-
-        public IEnumerable<Participant> GetListeParticipants()
-        {
-            InitialiserListeParticipants();
-            return this.participants;
-        }
-
-        public void EnregistrerParticipants(Participant participant)
-        {
-            if (!this.participants.Contains(participant))
-            {
-                this.participants.Add(participant);
-            }
-            this.EcrireFichierParticipants();
-            EcrireFichierParticipants();
-        }
-
-        private void EcrireFichierParticipants()
-        {
-            var contenuFichier = new StringBuilder();
-            foreach (var participant in this.participants)
-            {
-                contenuFichier.AppendLine(string.Join(
-                                            SeparateurChamps.ToString(),
-                                            participant.Age,
-                                            participant.Nom,
-                                            participant.Prenom,
-                                            participant.NuméroTéléphone,
-                                            participant.Adresse));
-                // pseudo ??
-
-                File.WriteAllText(CheminFichierPart, contenuFichier.ToString());
-            }
-        }
-
-        private void LireFichierParticipants()
-        {
-            this.participants = new List<Participant>();
-            if (File.Exists(CheminFichierPart))
-            {
-                var lignes = File.ReadAllLines(CheminFichierPart);
-                foreach (var ligne in lignes)
-                {
-                    var champs = ligne.Split(SeparateurChamps);
-
-                    var participant = new Participant();
-                    participant.Nom = champs[0];
-                    participant.Prenom = champs[1];
-                    participant.Adresse = champs[2];
-                    string num = participant.NuméroTéléphone.ToString();
-                    num = champs[3];
-                    //client.Civilite = champs[4]);  Pseudo ? Mot de passe ?
-
-                    participants.Add(participant);
-                }
-            }
-        }
 
 
 
+		// ========================= GESTION DES PARTICIPANTS =======================//
+		// ==========  === = ======== ========= ===== ===== ==========//
+
+
+		private void InitialiserListeParticipants()
+		{
+			if (this.participants == null)
+			{
+				LireFichierParticipants();
+			}
+		}
+
+		public IEnumerable<Participant> GetListeParticipants()
+		{
+			InitialiserListeParticipants();
+			return this.participants;
+		}
+
+		public void EnregistrerParticipants(Participant participant)
+		{
+			if (!this.participants.Contains(participant))
+			{
+				this.participants.Add(participant);
+			}
+			this.EcrireFichierParticipants();
+			EcrireFichierParticipants();
+		}
+
+		private void EcrireFichierParticipants()
+		{
+			var contenuFichier = new StringBuilder();
+			foreach (var participant in this.participants)
+			{
+				contenuFichier.AppendLine(string.Join(
+											SeparateurChamps.ToString(),
+											participant.Age,
+											participant.Nom,
+											participant.Prenom,
+											participant.NuméroTéléphone,
+											participant.Adresse));
+				// pseudo ??
+
+				File.WriteAllText(CheminFichierPart, contenuFichier.ToString());
+			}
+		}
+
+		private void LireFichierParticipants()
+		{
+			this.participants = new List<Participant>();
+			if (File.Exists(CheminFichierPart))
+			{
+				var lignes = File.ReadAllLines(CheminFichierPart);
+				foreach (var ligne in lignes)
+				{
+					var champs = ligne.Split(SeparateurChamps);
+
+					var participant = new Participant();
+					participant.Nom = champs[0];
+					participant.Prenom = champs[1];
+					participant.Adresse = champs[2];
+					string num = participant.NuméroTéléphone.ToString();
+					num = champs[3];
+					//client.Civilite = champs[4]);  Pseudo ? Mot de passe ?
+
+					participants.Add(participant);
+				}
+			}
+		}
 
 
 
@@ -226,46 +223,49 @@ namespace Data
 
 
 
-        // A RAJOUTER AUSSI POUR DESTINATIONS VOYAGE
-
-        public void SelectionnerVoyage(Voyage voyage)
-        {
-            if (!this.voyages.Contains(voyage))
-            {
-                this.voyages.Add(voyage);
-            }
-            this.EcrireFichierVoyage();
-            EcrireFichierVoyage();
-        }
 
 
 
-        private void EcrireFichierVoyage()
-        {
-            var contenuFichier = new StringBuilder();
-            foreach (var voyage in this.voyages)
-            {
-                contenuFichier.AppendLine(string.Join(
-                                            SeparateurChamps.ToString(),
-                                            voyage.Destination,
-                                            voyage.DateDeDepart,
-                                            voyage.DateDeFin,
-                                            voyage.PrixPersonne,
-                                            voyage.NombresParticipantsMax));
-                // pseudo ??
+		// A RAJOUTER AUSSI POUR DESTINATIONS VOYAGE
 
-                File.WriteAllText(CheminFichierVoya, contenuFichier.ToString());
-            }
-        }
-
-        
+		public void SelectionnerVoyage(Voyage voyage)
+		{
+			if (!this.voyages.Contains(voyage))
+			{
+				this.voyages.Add(voyage);
+			}
+			this.EcrireFichierVoyage();
+			EcrireFichierVoyage();
+		}
 
 
 
+		private void EcrireFichierVoyage()
+		{
+			var contenuFichier = new StringBuilder();
+			foreach (var voyage in this.voyages)
+			{
+				contenuFichier.AppendLine(string.Join(
+											SeparateurChamps.ToString(),
+											voyage.Destination,
+											voyage.DateDeDepart,
+											voyage.DateDeFin,
+											voyage.PrixPersonne,
+											voyage.NombresParticipantsMax));
+				// pseudo ??
 
-        public void CreerDossier()
-        {
+				File.WriteAllText(CheminFichierVoya, contenuFichier.ToString());
+			}
+		}
 
-        }
-    }
+
+
+
+
+
+		public void CreerDossier()
+		{
+
+		}
+	}
 }

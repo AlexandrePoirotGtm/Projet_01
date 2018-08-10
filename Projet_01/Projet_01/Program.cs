@@ -13,12 +13,14 @@ namespace Application
 	class Program
 	{
         static List<Client> clients = new List<Client>();
+        
         static void Main(string[] args)
 		{
 			Console.WriteLine("Hello World!!!");
 			Console.WriteLine("Hello GTM!!!");
             Client cli = new Client();
-            OutilsApplication.Loggin(cli);
+			OutilsData outils = new OutilsData();
+            OutilsApplication.Loggin(outils.get);
             OutilsApplication.AffichageMenu();
 
             //OutilsData.LectureFichier();
