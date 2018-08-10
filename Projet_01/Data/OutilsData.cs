@@ -25,7 +25,7 @@ namespace Data
 		private List<Dossier> dossiers { get; set; }
 		private List<Client> clients { get; set; }
 		private List<Participant> participants { get; set; }
-		private List<Commerciaux> commerciaux { get; set; }
+		private List<Commerciaux> commerciaux = new List<Commerciaux>();//{ get; set; }
 
 		// =========================== GESTION DES CLIENTS=============================//
 		// ===================== Déclaration d'un nouveau client ======================//

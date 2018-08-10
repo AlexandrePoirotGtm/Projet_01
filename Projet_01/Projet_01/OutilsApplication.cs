@@ -90,6 +90,7 @@ namespace Application
 			Console.ResetColor();
 			return mdp;
 		}
+
 		public static void AffichageMenu()
 		{
 			Console.Clear();
