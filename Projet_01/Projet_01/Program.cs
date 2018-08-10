@@ -16,12 +16,15 @@ namespace Application
         
         static void Main(string[] args)
 		{
-			Console.WriteLine("Hello World!!!");
-			Console.WriteLine("Hello GTM!!!");
+			//Console.WriteLine("Hello World!!!");
+			//Console.WriteLine("Hello GTM!!!");
             Client cli = new Client();
 			OutilsData outils = new OutilsData();
             OutilsApplication.Loggin(outils.GetListeClients());
             OutilsApplication.AffichageMenu();
+            Console.ReadKey();
+
+           
 
             //OutilsData.LectureFichier();
 
