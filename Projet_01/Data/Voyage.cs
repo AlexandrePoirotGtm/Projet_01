@@ -15,7 +15,31 @@ namespace Data
 		public string Agence { get; set; }
 		public Destination Destination { get; set; }
 
+		public Destination RecupDest(string liste, char separateurChamps)
+		{
+			var champs = liste.Split(separateurChamps);
 
+			Destination = new Destination();
+			Destination.Nom = champs[0];
+			Destination.Description = champs[1];
+			Destination.Continent = champs[2];
+			Destination.Pays = champs[3];
+			Destination.Region = champs[4];
+
+			return Destination;
+		}
+
+		public StringBuilder SaveDest()
+		{
+			var detailDest = new StringBuilder();
+			detailDest.AppendLine(string.Join('*'.ToString(),
+												Destination.Nom,
+												Destination.Description,
+												Destination.Continent,
+												Destination.Pays,
+												Destination.Region));
+			return detailDest;
+		}
 	}
 
 }

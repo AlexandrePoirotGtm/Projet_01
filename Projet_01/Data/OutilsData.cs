@@ -18,6 +18,7 @@ namespace Data
 		const string CheminFichierComm = @"...\Commerciaux.txt";
 
 		const char SeparateurChamps = ';';
+		const char SeparateurChamps2 = '§';
 
 
 		private List<Destination> destinations = new List<Destination>();
@@ -295,16 +296,13 @@ namespace Data
 				foreach (var ligne in lignes)
 				{
 					var champs = ligne.Split(SeparateurChamps);
-
+				
 					var destination = new Destination();
 					destination.Nom = champs[0];
 					destination.Description = champs[1];
 					destination.Continent = champs[2];
 					destination.Pays = champs[3];
 					destination.Region = champs[4];
-
-					//client.Civilite = champs[4]);  Pseudo ? Mot de passe ?
-
 					destinations.Add(destination);
 				}
 			
@@ -421,14 +419,15 @@ namespace Data
                 foreach (var ligne in lignes)
                 {
                     var champs = ligne.Split(SeparateurChamps);
-
+				 
                     var voyage = new Voyage();
                     voyage.DateDeDepart = DateTime.Parse(champs[0]);
                     voyage.DateDeFin = DateTime.Parse(champs[1]);
                     voyage.PrixPersonne = double.Parse(champs[2]);
                     voyage.NombresParticipantsMax = int.Parse(champs[3]);
                     voyage.Agence = champs[4];
-                   // voyage.Destination = champs[5];
+					voyage.Destination = voyage.RecupDest(champs[5],SeparateurChamps2);
+					
                     voyages.Add(voyage);
                 }
            
@@ -445,7 +444,7 @@ namespace Data
                                             voyage.DateDeFin,
                                             voyage.PrixPersonne,
                                             voyage.NombresParticipantsMax,
-                                            voyage.Agence));
+                                            voyage.Agence,voyage.SaveDest()));
                 File.WriteAllText(CheminFichierVoya, contenuFichier.ToString());
             }
         }
