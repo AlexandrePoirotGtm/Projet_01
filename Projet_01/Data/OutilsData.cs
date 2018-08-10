@@ -36,33 +36,13 @@ namespace Data
             InitialiserListeVoyages();
 		}
 
-		 ~OutilsData()
+		 public void Testament()
 		{
-			foreach(Client client in clients)
-			{
-				EnregistrerClient(client);
-			}
-
-			foreach (Destination dest in destinations)
-			{
-				EnregistrerDestinations(dest);
-			}
-
-			foreach (Voyage voyage in voyages)
-			{
-				EnregistrerVoyages(voyage);
-			}
-
-			foreach (Participant participant in participants)
-			{
-				EnregistrerParticipants(participant);
-			}
-
-			foreach (Commerciaux commercial in commerciaux)
-			{
-				EnregistrerCommerciaux(commercial);
-			}
-
+			EcrireFichierClient();
+			EcrireFichierCommerciaux();
+			EcrireFichierDestinations();
+			EcrireFichierParticipants();
+			EcrireFichierVoyages();
 		}
 
 		// =========================== GESTION DES CLIENTS=============================//
@@ -391,9 +371,9 @@ namespace Data
             {
                 contenuFichier.AppendLine(string.Join(
                                             SeparateurChamps.ToString(),
-                                            commercial.Pseudo,
                                             commercial.Nom,
                                             commercial.Prenom,
+                                            commercial.Pseudo,
                                             commercial.MotDePasse));
 
 
@@ -481,6 +461,9 @@ namespace Data
 			Commerciaux George = new Commerciaux();
 			George.Pseudo = pseudo;
 			George.MotDePasse = mdp;
+			George.Nom = "Doggo";
+			George.Prenom = "George";
+			
 			commerciaux.Add(George);
 
 			foreach (Commerciaux com in commerciaux)

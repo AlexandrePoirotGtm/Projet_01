@@ -39,12 +39,13 @@ namespace Application
                     case "Q":
                     case "q":
                         OutilsApplication.CenterText("QUITTER");
-                        return;
+						outils.Testament();
+						return;
 
                 }
             }
 
-           
+			
 
         }
 
