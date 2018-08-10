@@ -128,7 +128,7 @@ namespace Data
 											));
                 // pseudo ??
 
-                File.Create(CheminFichierCli);
+               //File.Create(CheminFichierCli);
                 File.WriteAllText(CheminFichierCli, contenuFichier.ToString());
 			}
 		}

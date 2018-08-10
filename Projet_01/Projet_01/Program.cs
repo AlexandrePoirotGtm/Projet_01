@@ -14,8 +14,7 @@ namespace Application
 	{
         static void Main(string[] args)
 		{
-			//Console.WriteLine("Hello World!!!");
-			//Console.WriteLine("Hello GTM!!!");
+			
             Client cli = new Client();
 			OutilsData outils = new OutilsData();
             OutilsApplication.Loggin(outils);
@@ -38,16 +37,7 @@ namespace Application
                     case "Q":
                     case "q":
                         OutilsApplication.CenterText("QUITTER");
-
-                        Destination dest = new Destination();
-                        dest.Nom = "truc";
-                        outils.destinations.Add(dest);
-                        Voyage vovo = new Voyage();
-                        vovo.Destination = outils.destinations.FirstOrDefault();
-                        outils.voyages.Add(vovo);
-
-
-						outils.Testament();
+						//outils.Testament();
                         return;
                     default:
                         Console.WriteLine("Choix invalide, recommencez");

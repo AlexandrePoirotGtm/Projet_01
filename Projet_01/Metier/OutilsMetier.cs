@@ -32,13 +32,13 @@ namespace Metier
             leClient.NuméroTéléphone = PosezQuestion("Entrer le numéro de Tel du Client", ConsoleColor.Green);
             leClient.Pseudo = PosezQuestion("Entrer votre Pseudo", ConsoleColor.Green);
             leClient.MotDePasse = PosezQuestion("Entrer le mMot de Passe", ConsoleColor.Green);
-            outils.GetListeClients().Add(leClient);
-            
+           outils.GetListeClients().Add(leClient);
+           outils.EnregistrerClient(leClient);
 
             Console.WriteLine("Le nouveau Client a bien été ajouté\n");
 
             Console.ReadKey();
-            // OutilsData.EnregistrerClient(leClient);
+            
             return;
         }
 
