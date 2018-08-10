@@ -103,9 +103,20 @@ namespace Application
             return choix;
 		}
 
+        public static string AffichageMenuClient()
+        {
+            string choix;
+            Console.Clear();
+            AffichezMessage("\tGESTION DES CLIENTS\n", ConsoleColor.Gray);
+            AffichezMessage("\n1-LISTE DES CLIENTS", ConsoleColor.Cyan);
+            AffichezMessage("\n2-CREER UN NOUVEAU CLIENT", ConsoleColor.Cyan);
+            AffichezMessage("\n3- SUPPRIMER UN CLIENT", ConsoleColor.Cyan);
+            AffichezMessage("\nQ- REVENIR AU MENU PRINCIPAL", ConsoleColor.Cyan);
+            choix = Console.ReadLine();
+            return choix;
+        }
 
-
-		public static void CenterText(string text)
+        public static void CenterText(string text)
 		{
 			int winWidth = (Console.WindowWidth / 2 - 15);
 			Console.WriteLine(new string(' ', winWidth) + $"{text.PadRight(30)}\n");
