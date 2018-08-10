@@ -30,7 +30,7 @@ namespace Application
                         MenuClients(outils);                     
                         break;
                     case "2":
-                        MenuVoyages();
+                        MenuVoyages(outils);
                         break;
                     case "3":
                         MenuDossiers();
@@ -38,7 +38,15 @@ namespace Application
                     case "Q":
                     case "q":
                         OutilsApplication.CenterText("QUITTER");
-						
+
+                        Destination dest = new Destination();
+                        dest.Nom = "truc";
+                        outils.destinations.Add(dest);
+                        Voyage vovo = new Voyage();
+                        vovo.Destination = outils.destinations.FirstOrDefault();
+                        outils.voyages.Add(vovo);
+
+
 						outils.Testament();
                         return;
                     default:
@@ -82,7 +90,7 @@ namespace Application
           
         }
 
-        static void MenuVoyages()
+        static void MenuVoyages(OutilsData outils)
         {
             bool continuer = true;
             while (continuer)
@@ -91,7 +99,7 @@ namespace Application
                 switch (choix)
                 {
                     case "1":
-                        OutilsMetier.ListerVoyages();
+                        OutilsMetier.ListerVoyages(outils);
                         Console.ReadKey();
                         break;
                     case "2":

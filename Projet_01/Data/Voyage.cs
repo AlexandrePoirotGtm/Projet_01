@@ -15,6 +15,15 @@ namespace Data
 		public string Agence { get; set; }
 		public Destination Destination { get; set; }
 
+        public Voyage()
+        {
+            DateDeDepart = DateTime.Parse("01/01/0001");
+            DateDeFin = DateTime.Parse("01/01/0001");
+            NombresParticipantsMax = 0;
+            PrixPersonne = 0;
+            Agence = "Agence";
+        }
+
 		public Destination RecupDest(string liste, char separateurChamps)
 		{
 			var champs = liste.Split(separateurChamps);

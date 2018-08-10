@@ -64,13 +64,13 @@ namespace Data
 
 		public List<Client> GetListeClients()
 		{
-			InitialiserListeClients();
+			//InitialiserListeClients();
 			return this.clients;
 		}
 
 		public void EnregistrerClient(Client client)
 		{
-			InitialiserListeClients();
+			//InitialiserListeClients();
 
 			if (!this.clients.Contains(client))
 			{
@@ -126,9 +126,10 @@ namespace Data
                                             client.Pseudo,
                                             client.MotDePasse
 											));
-				// pseudo ??
+                // pseudo ??
 
-				File.WriteAllText(CheminFichierCli, contenuFichier.ToString());
+                File.Create(CheminFichierCli);
+                File.WriteAllText(CheminFichierCli, contenuFichier.ToString());
 			}
 		}
 
@@ -174,7 +175,7 @@ namespace Data
 
 		public IEnumerable<Participant> GetListeParticipants()
 		{
-			InitialiserListeParticipants();
+			//InitialiserListeParticipants();
 			return this.participants;
 		}
 
@@ -190,7 +191,7 @@ namespace Data
 
 		public void SupprimerParticipants(Participant participant)
 		{
-			InitialiserListeParticipants();
+			//InitialiserListeParticipants();
 			this.participants.Remove(participant);
 			this.EcrireFichierParticipants();
 		}
@@ -208,8 +209,8 @@ namespace Data
 											participant.NuméroTéléphone,
 											participant.Adresse));
 
-
-				File.WriteAllText(CheminFichierPart, contenuFichier.ToString());
+                File.Create(CheminFichierPart);
+                File.WriteAllText(CheminFichierPart, contenuFichier.ToString());
 			}
 		}
 
@@ -254,7 +255,7 @@ namespace Data
 
         public IEnumerable<Destination> GetListeDestinations()
         {
-            InitialiserListeDestinations();
+            //InitialiserListeDestinations();
             return this.destinations;
         }
 
@@ -270,7 +271,7 @@ namespace Data
 
         public void SupprimerDestinations(Destination destination)
         {
-            InitialiserListeDestinations();
+           // InitialiserListeDestinations();
             this.destinations.Remove(destination);
             this.EcrireFichierDestinations();
         }
@@ -288,8 +289,8 @@ namespace Data
                                             destination.Pays,
                                             destination.Region));
 
-
-				File.WriteAllText(CheminFichierDest, contenuFichier.ToString());
+                File.Create(CheminFichierDest);
+                File.WriteAllText(CheminFichierDest, contenuFichier.ToString());
             }
         }
 
@@ -317,7 +318,7 @@ namespace Data
 
         public IEnumerable<Commerciaux> GetListeCommerciaux()
         {
-            InitialiserListeCommerciaux();
+            //InitialiserListeCommerciaux();
             return this.commerciaux;
         }
 
@@ -378,7 +379,7 @@ namespace Data
                                             commercial.Pseudo,
                                             commercial.MotDePasse));
 
-
+                File.Create(CheminFichierComm);
                 File.WriteAllText(CheminFichierComm, contenuFichier.ToString());
             }
         }
@@ -387,9 +388,9 @@ namespace Data
         // ========================= GESTION DES VOYAGES =======================//
         // ========================= === = ======== ========= ===== ===== ==========//
 
-        public IEnumerable<Voyage> GetListeVoyages()
+        public List<Voyage> GetListeVoyages()
         {
-            InitialiserListeVoyages();
+            //InitialiserListeVoyages();
             return this.voyages;
         }
 
@@ -453,6 +454,7 @@ namespace Data
                                             voyage.PrixPersonne,
                                             voyage.NombresParticipantsMax,
                                             voyage.Agence,voyage.SaveDest(SeparateurChamps2).ToString()));
+                File.Create(CheminFichierVoya);
                 File.WriteAllText(CheminFichierVoya, contenuFichier.ToString());
             }
         }

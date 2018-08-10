@@ -24,19 +24,14 @@ namespace Metier
 
             PosezQuestion("Mr ou Mme?", ConsoleColor.Green);
             leClient.Civilite = Console.ReadLine();
-            
-            PosezQuestion("Entrer le Nom du Client", ConsoleColor.Green);
-            leClient.Nom = Console.ReadLine();
-            PosezQuestion("Entrer le Prénom du Client", ConsoleColor.Green);
-            leClient.Prenom = Console.ReadLine();
-            PosezQuestion("Entrer l'Adresse", ConsoleColor.Green);
-            leClient.Adresse = Console.ReadLine();
-            PosezQuestion("Entrer le numéro de Tel du Client", ConsoleColor.Green);
-            leClient.NuméroTéléphone = Console.ReadLine();
-            PosezQuestion("Entrer votre Pseudo", ConsoleColor.Green);
-            leClient.Pseudo = Console.ReadLine();
-            PosezQuestion("Entrer le mMot de Passe", ConsoleColor.Green);
-            leClient.MotDePasse = Console.ReadLine();
+
+            leClient.Nom = PosezQuestion("Entrer le Nom du Client", ConsoleColor.Green);
+
+            leClient.Prenom = PosezQuestion("Entrer le Prénom du Client", ConsoleColor.Green);
+            leClient.Adresse = PosezQuestion("Entrer l'Adresse", ConsoleColor.Green);
+            leClient.NuméroTéléphone = PosezQuestion("Entrer le numéro de Tel du Client", ConsoleColor.Green);
+            leClient.Pseudo = PosezQuestion("Entrer votre Pseudo", ConsoleColor.Green);
+            leClient.MotDePasse = PosezQuestion("Entrer le mMot de Passe", ConsoleColor.Green);
             outils.GetListeClients().Add(leClient);
             
 
@@ -89,11 +84,10 @@ namespace Metier
         }
 
 
-
-
         public static void SupprimerClients(OutilsData outils)
         {
-
+            Console.WriteLine("EN CONSTRUCTION .......");
+            Console.ReadKey();
         }
 
 
@@ -101,7 +95,7 @@ namespace Metier
         // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
         // ===============================  METHODES DE MANIPULATION DES VOYAGES ++++++++++++++++++++++++++++++++++//
 
-        private static void AfficherVoyages(IEnumerable<Voyage> listeVoyages)
+        private static void AfficherVoyages(List<Voyage> listeVoyages )
         {
             Console.Write("{0,-20} | ", "DESTINATION");
             Console.Write("{0,-10} |", "DATE DEBUT");
@@ -115,16 +109,15 @@ namespace Metier
 
             int i = 1;
 
-            foreach (var voyage in listeVoyages)
+            foreach (var voyage in listeVoyages )
             {
                 Console.Write("{0,-3} ", i);
-                Console.Write("{0,-10} ", voyage.Destination);
+                Console.Write("{0,-10} ", voyage.Destination.Nom);
                 Console.Write("{0,-10} ", voyage.DateDeDepart);
                 Console.Write("{0,-20} ", voyage.DateDeFin);
                 Console.Write("{0,-20} ", voyage.NombresParticipantsMax);
                 Console.Write("{0,-20} ", voyage.PrixPersonne);
                 Console.Write("{0,-20} ", voyage.Agence);
-                
                 i++;
             }
 
@@ -134,21 +127,25 @@ namespace Metier
 
 
 
-        public static void ListerVoyages()
+        public static void ListerVoyages(OutilsData outils)
         {
-            OutilsData outils = new OutilsData();
-            var listeVoyages = outils.GetListeVoyages();
-            AfficherVoyages(listeVoyages);
+            //OutilsData outils = new OutilsData();
+           // var listeVoyages = outils.GetListeVoyages();
+            AfficherVoyages(outils.GetListeVoyages());
         }
 
         public static void RechercherVoyage()
         {
-
+            Console.Clear();
+            Console.WriteLine("EN CONSTRUCTION .......");
+            Console.ReadKey();
         }
 
         public static void SelectionnerVoyage()
         {
-
+            Console.Clear();
+            Console.WriteLine("EN CONSTRUCTION .......");
+            Console.ReadKey();
         }
 
         // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
