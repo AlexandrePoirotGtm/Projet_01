@@ -53,7 +53,7 @@ namespace Application
             Console.ResetColor();
         }
 
-        public static bool Loggin()
+        public static bool Loggin(IEnumerable<ILogger> List)
         {
             string pseudo;
             string motDePasse;
